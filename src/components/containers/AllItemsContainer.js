@@ -11,6 +11,7 @@ class AllItemsContainer extends Component {
 
   render() {
     return (
+      
       <AllItemsView
         allItems={this.props.allItems}
       />
@@ -33,7 +34,7 @@ const mapDispatch = (dispatch) => {
 };
 
 // Type check props;
-AllCampusesContainer.propTypes = {
+AllItemsContainer.propTypes = {
   allItems: PropTypes.array.isRequired,
   fetchAllItems: PropTypes.func.isRequired,
 };
