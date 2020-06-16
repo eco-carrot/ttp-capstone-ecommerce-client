@@ -8,6 +8,7 @@ const RoutesView = () => {
   return (
     <Switch>
       <Route exact path="/items" component={AllItemsContainer} />
+      <Route exact path="/shoppingCart" component={ShoppingCartContainer} />
     </Switch>
   );
 };
