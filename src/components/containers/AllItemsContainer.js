@@ -6,15 +6,18 @@ import { AllItemsView } from "../views";
 
 class AllItemsContainer extends Component {
   componentDidMount() {
+    console.log("Allitem container mount");
     this.props.fetchAllItems();
   }
 
   render() {
     return (
-      
+      <div>      
+      {console.log(this.props.allItems)}
       <AllItemsView
         allItems={this.props.allItems}
       />
+      </div>
     );
   }
 }

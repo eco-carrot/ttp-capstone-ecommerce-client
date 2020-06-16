@@ -6,7 +6,7 @@ import {
 
 const RoutesView = () => {
   return (
-    <Switch>
+    <Switch>            
       <Route exact path="/items" component={AllItemsContainer} />
     </Switch>
   );
