@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <NavBarContainer />
+        
         <header className="app-header">
           <RoutesContainer />
         </header>

@@ -6,7 +6,7 @@ const AllItemsView = (props) => {
 
   return (
     <div className="all-items">
-
+      <h1>HELLO</h1>
     </div>
   );
 };
