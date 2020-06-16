@@ -12,7 +12,8 @@ const AllItemsView = (props) => {
               <Link to={`/items/${item.id}`}>
                 <h1>{item.name}</h1>
               </Link>
-              <img src={item.imageURL} width="200px" alt={item.name} />              
+              <img src={item.imageURL} width="150px" alt={item.name} />   
+              <p>Price: ${((item.price)/100).toFixed(2)}</p>        
             </div>
         ))}
       </div>

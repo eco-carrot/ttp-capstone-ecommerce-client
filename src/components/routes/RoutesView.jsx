@@ -2,7 +2,8 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import {
   AllItemsContainer,
-  ShoppingCartContainer
+  ItemContainer,
+  ShoppingCartContainer,
 } from "../containers";
 
 const RoutesView = () => {
@@ -10,6 +11,7 @@ const RoutesView = () => {
     <Switch>            
       <Route exact path="/" component={AllItemsContainer} />
       <Route exact path="/items" component={AllItemsContainer} />
+      <Route exact path="/items/:id" component={ItemContainer} />
       <Route exact path="/shoppingCart" component={ShoppingCartContainer} />
     </Switch>
   );
