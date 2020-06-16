@@ -15,7 +15,11 @@ const fetchAllItems = (items) => {
 export const fetchAllItemsThunk = () => (dispatch) => {
   return axios
     .get("/api/items")
-    .then((res) => res.data)
+    .then((res) => {
+      console.log(res.data);
+      return res.data;
+    
+    })
     .then((items) => dispatch(fetchAllItems(items)))
     .catch((err) => console.log(err));
 };
