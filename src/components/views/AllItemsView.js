@@ -14,7 +14,7 @@ const AllItemsView = (props) => {
                 <h1>{item.name}</h1>
               </Link>
               <img src={item.imageURL} width="200px" alt={item.name} /> 
-              <AdditemsContainer itemId={item.id}/>         
+              <AdditemsContainer name={item.name} price={item.price} id={item.id}/>         
             </div>
         ))}
       </div>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { addToCart} from "../../thunks";
+import { addToCart } from "../../thunks";
 import { AddItemsView } from "../views";
 
 class AddItemsContainer extends Component {
@@ -21,7 +21,7 @@ class AddItemsContainer extends Component {
   render() {
     return (
       <>
-        <AddItemsView itemId={this.props.itemId} allItems={this.props.shoppingCart} handleAddToCart={this.handleAddToCart}/>
+        <AddItemsView id={this.props.id} allItems={this.props.shoppingCart} handleAddToCart={this.handleAddToCart}/>
       </>
     );
   }
@@ -33,8 +33,8 @@ const mapState = (state) => {
   };
 
 const mapDispatch = (dispatch) => ({
+    //addToCart: (id) => dispatch(addToCart(id)),
     addToCart: (id) => dispatch(addToCart(id)),
-    //addToCart: (item) => dispatch(addToCartThunk(item, ownProps)),
 });
 
 

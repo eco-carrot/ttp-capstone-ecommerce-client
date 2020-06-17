@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchOrderThunk} from "../../thunks";
 
-import { OrderView } from "../views";
 
 class OrderContainer extends Component {
  
