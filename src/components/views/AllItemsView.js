@@ -18,6 +18,9 @@ const AllItemsView = (props) => {
         ))}
       </div>
       
+      <Link to="/items/new" className="add-item">
+        Add New Item
+      </Link>
 
 
     </div>

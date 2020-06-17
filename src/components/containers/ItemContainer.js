@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {  
-  fetchItemThunk
+  fetchItemThunk,
+  deleteItemThunk
 } from "../../thunks";
 
 import { ItemView } from "../views";
@@ -12,21 +13,19 @@ class ItemContainer extends Component {
     
   }
 
-  /*
+  
   handleDelete = (id) => {
     this.props.deleteItem(id);
     this.props.history.push("/items");
   };  
-  */
+  
 
   render() {
     console.log(this.props)
     return (
       <ItemView
         item={this.props.item}
-        //handleDelete={this.handleDelete}  
-        //campus={this.props.fetchCampus()}
-        
+        handleDelete={this.handleDelete}        
       />
     );
   }
@@ -42,8 +41,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchItem: (id) => dispatch(fetchItemThunk(id)),
-    //deleteItem: (id) => dispatch(deleteItemThunk(id)),    
-    //fetchCampus: (id) => dispatch(fetchCampusThunk(id))    
+    deleteItem: (id) => dispatch(deleteItemThunk(id)),          
   };
 };
 
