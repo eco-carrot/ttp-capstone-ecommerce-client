@@ -5,9 +5,14 @@ import { fetchAllItemsThunk } from "../../thunks";
 import { AllItemsView } from "../views";
 
 class AllItemsContainer extends Component {
+
   componentDidMount() {
     console.log("Allitem container mount");
     this.props.fetchAllItems();
+  }
+  
+  handleAddToCart=( name, price)=>{
+    this.props.addToCart( name, price);
   }
 
   render() {
@@ -33,13 +38,14 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchAllItems: () => dispatch(fetchAllItemsThunk()),
-  };
-};
+  }
+}
 
 // Type check props;
 AllItemsContainer.propTypes = {
   allItems: PropTypes.array.isRequired,
   fetchAllItems: PropTypes.func.isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
 // Export our store-connected container by default;

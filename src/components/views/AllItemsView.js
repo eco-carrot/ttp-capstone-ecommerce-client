@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { AdditemsContainer } from "../containers";
 
 const AllItemsView = (props) => {
 
@@ -12,7 +13,8 @@ const AllItemsView = (props) => {
               <Link to={`/items/${item.id}`}>
                 <h1>{item.name}</h1>
               </Link>
-              <img src={item.imageURL} width="200px" alt={item.name} />              
+              <img src={item.imageURL} width="200px" alt={item.name} /> 
+              <AdditemsContainer name={item.name} price={item.price} itemId={item.id}/>         
             </div>
         ))}
       </div>

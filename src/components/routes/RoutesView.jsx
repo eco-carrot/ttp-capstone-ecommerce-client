@@ -10,9 +10,10 @@ const RoutesView = () => {
     <Switch>            
       <Route exact path="/" component={AllItemsContainer} />
       <Route exact path="/items" component={AllItemsContainer} />
-      <Route exact path="/shoppingCart" component={ShoppingCartContainer} />
+      
+      <Route exact path="/shoppingCart/:id" component={ShoppingCartContainer} />
     </Switch>
   );
 };
-
+//<Route exact path="/shoppingCart" component={ShoppingCartContainer} />
 export default RoutesView;
