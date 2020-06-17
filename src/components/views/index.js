@@ -1,3 +1,5 @@
 export {default as AllItemsView} from "./AllItemsView"
 export {default as NavBarView} from "./NavBarView"
 export {default as AddItemsView} from "./AddItemsView"
+export {default as OrderView} from "./OrderView"
+export {default as ItemNameListView} from "./ItemNameListView"

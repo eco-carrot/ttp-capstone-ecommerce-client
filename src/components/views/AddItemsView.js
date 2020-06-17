@@ -1,13 +1,15 @@
 import React from "react";
+import {OrderContainer} from "../containers" 
 
-const ShoppingCartView = (props) => {
+const AddItemsView = (props) => {
   return (
     <div className="add-to-cart">   
-    <button type="button" onClick={()=>props.handleAddToCart(props.name,props.price)}>
+    <button type="button" onClick={()=>props.handleAddToCart(props.itemId)}>
         Add to Cart
     </button>
+    
     </div>
   );
 };
 
-export default ShoppingCartView;
+export default AddItemsView;
