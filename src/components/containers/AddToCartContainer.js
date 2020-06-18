@@ -39,7 +39,7 @@ const mapState = (state) => {
   };
 
 const mapDispatch = (dispatch, ownProps) => ({
-    addToCart: (id) => dispatch(addToCartThunk(id)),
+    addToCart: (item) => dispatch(addToCartThunk(item)),
     createOrder: (ownProps) => dispatch(createOrderThunk(ownProps))
 });
 
