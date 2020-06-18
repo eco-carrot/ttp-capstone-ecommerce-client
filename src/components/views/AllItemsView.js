@@ -15,7 +15,7 @@ const AllItemsView = (props) => {
               </Link>
               <img src={item.imageURL} width="150px" alt={item.name} />   
               <p>Price: ${((item.price)/100).toFixed(2)}</p>
-              {/* <AddToCartContainer name={item.name} price={item.price} id={item.id}/>         */}
+              <AddToCartContainer id={item.id}/>
             </div>
         ))}
       </div>
