@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import {AddToCartContainer} from "../containers"
 
 const AllItemsView = (props) => {
 
@@ -13,7 +14,8 @@ const AllItemsView = (props) => {
                 <h1>{item.name}</h1>
               </Link>
               <img src={item.imageURL} width="150px" alt={item.name} />   
-              <p>Price: ${((item.price)/100).toFixed(2)}</p>        
+              <p>Price: ${((item.price)/100).toFixed(2)}</p>
+              <AddToCartContainer name={item.name} price={item.price} id={item.id}/>        
             </div>
         ))}
       </div>
