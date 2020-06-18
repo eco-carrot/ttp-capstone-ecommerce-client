@@ -12,10 +12,10 @@ const fetchAllItemsInCart = (items) => {
   };
 };
 
-// export const addToCart = (id) => ({
-//   type: ADD_TO_CART,
-//   payload: id
-// });
+export const addToCart = (id) => ({
+  type: ADD_TO_CART,
+  payload: id
+});
 
 
 export const fetchAllItemsInCartThunk = (id) => (dispatch) => {
@@ -29,17 +29,18 @@ export const fetchAllItemsInCartThunk = (id) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-  // export const addToCartThunk = (order) => (dispatch) => {
-  //   return axios
-  //     .post("/api/orders", order)
-  //     .then((res) => res.data)
-  //     .then((newOrder) => {
-  //       //const tweakedOrder = { ...newOrder, items: [] };
-  //       dispatch(addOrder(newOrder));
-  //       //ownProps.history.push(`/orders/${newOrder.id}`);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
+// creating a cart if user 
+export const addToCartThunk = (item, ownProps) => (dispatch) => {
+  return axios
+    .post(`/api/order_items/`, item)
+    .then((res) => res.data)
+    .then((newCart) => {
+      const updatedCart = { ...newCart, items: [] };
+      dispatch(addToCart(updatedCart));
+      ownProps.history.push(`/order_items/${newCart.id}`);
+    })
+    .catch((err) => console.log(err));
+};
 
 
 
