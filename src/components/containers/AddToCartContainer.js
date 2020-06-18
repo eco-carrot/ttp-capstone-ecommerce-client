@@ -16,12 +16,11 @@ class AddToCartContainer extends Component {
   }
 
   handleAddToCart=(itemId)=>{
-    //this.setState({itemId})
-    //this.setState({quantity: this.state.quantity + 1 });
     //this.setState({orderId: this.props.match.params.id})
     // (shoppingCart)?(this.setState({orderId:this.props})):this.props.createOrder();
-    console.log(this.state)
-    this.props.addToCart(this.state);
+    
+    // orderId need to be changed later on, depending on order associated with user
+    this.props.addToCart({quantity: this.state.quantity, orderId: this.state.orderId,itemId:itemId});
   }
 
   render() {
@@ -40,7 +39,7 @@ const mapState = (state) => {
   };
 
 const mapDispatch = (dispatch, ownProps) => ({
-    addToCart: (id) => dispatch(addToCartThunk(id)),
+    addToCart: (item) => dispatch(addToCartThunk(item)),
     createOrder: (ownProps) => dispatch(createOrderThunk(ownProps))
 });
 

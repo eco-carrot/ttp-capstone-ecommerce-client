@@ -3,6 +3,7 @@ import axios from 'axios';
 // Shopping Cart
 const FETCH_CART = 'FETCH_CART';
 const ADD_TO_CART = 'ADD_TO_CART';
+const EDIT_ITEM_IN_CART = 'EDIT_ITEM_IN_CART';
 
 // Action Creator
 const fetchAllItemsInCart = (items) => {
@@ -14,6 +15,11 @@ const fetchAllItemsInCart = (items) => {
 
 export const addToCart = (id) => ({
   type: ADD_TO_CART,
+  payload: id
+});
+
+export const editItemInCart = (id) => ({
+  type: EDIT_ITEM_IN_CART,
   payload: id
 });
 
@@ -42,6 +48,16 @@ export const addToCartThunk = (item, ownProps) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
+export const editQuantityThunk = (id, itemId, quantity)=>(dispatch)=>{
+  return axios
+    .put(`/api/order_items/${id}/${itemId}`, quantity)
+    .then((res) => res.data)
+    .then((updatedQuantity) => {
+      dispatch(editItemInCart(updatedQuantity));
+    })
+    .catch((err) => console.log(err));
+}
+
 
 
 const Reducer = (state = [], action) => {
@@ -49,9 +65,14 @@ const Reducer = (state = [], action) => {
     case FETCH_CART:
       return action.payload
     case ADD_TO_CART:
-      return [...state, action.payload]                 
+      return [...state, action.payload]     
+    case EDIT_ITEM_IN_CART:
+      return state.map((item) =>
+        item.itemId === action.payload.id ? action.payload : item
+      );            
     default:
         return state;
+        
   }
 };
 export default Reducer;

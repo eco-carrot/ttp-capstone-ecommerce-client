@@ -5,4 +5,5 @@ export {default as EditItemFormView} from "./EditItemFormView"
 export {default as NavBarView} from "./NavBarView"
 
 export {default as AllItemsInCartView} from "./AllItemsInCartView"
+export {default as EditShoppingCartView} from "./EditShoppingCartView"
 export {default as AddToCartView} from "./AddToCartView"
