@@ -4,8 +4,8 @@ import {
   AllItemsContainer,
   ItemContainer,
   AddItemFormContainer,
-  EditItemFormContainer
-  //ShoppingCartContainer,
+  EditItemFormContainer,
+  AllItemsInCartContainer,
 } from "../containers";
 
 const RoutesView = () => {
@@ -17,7 +17,7 @@ const RoutesView = () => {
       <Route exact path="/items/:id" component={ItemContainer} />
       <Route exact path="/items/:id/edit" component={EditItemFormContainer} />
       
-      
+      <Route exact path="/shoppingCart/:id" component={AllItemsInCartContainer} />
     </Switch>
   );
 };
