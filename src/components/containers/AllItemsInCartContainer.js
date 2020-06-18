@@ -1,19 +1,22 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchAllItemsInCartThunk } from "../../thunks";
+import { fetchAllItemsInCartThunk, fetchAllItemsThunk } from "../../thunks";
 import { AllItemsInCartView } from "../views";
 
 class AllItemsInCartContainer extends Component {
   componentDidMount() {
     this.props.fetchAllItemsInCart(this.props.match.params.id);
+    this.props.fetchAllItems();
   }
 
   render() {
     return (
-      <div>      
+      <div> 
           <AllItemsInCartView
-            shoppingCart={this.props.shoppingCart}/>
+            shoppingCart={this.props.shoppingCart}
+            allItems={this.props.allItems}
+            />
       </div>
     );
   }
@@ -23,6 +26,7 @@ class AllItemsInCartContainer extends Component {
 const mapState = (state) => {
   return {
     shoppingCart: state.shoppingCart,
+    allItems: state.allItems,
   };
 };
 
@@ -30,6 +34,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchAllItemsInCart: (id) => dispatch(fetchAllItemsInCartThunk(id)),
+    fetchAllItems: () => dispatch(fetchAllItemsThunk()),
   };
 };
 
