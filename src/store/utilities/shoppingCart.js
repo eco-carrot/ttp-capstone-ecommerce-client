@@ -5,6 +5,7 @@ const FETCH_CART = 'FETCH_CART';
 const ADD_TO_CART = 'ADD_TO_CART';
 const EDIT_ITEM_IN_CART = 'EDIT_ITEM_IN_CART';
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+const CLEAR_FROM_CART = "CLEAR_FROM_CART";
 
 // Action Creator
 const fetchAllItemsInCart = (items) => {
@@ -29,6 +30,10 @@ export const removeFromCart = (id) => ({
   payload: id
 });
 
+export const clearFromCart = (id) => ({
+  type: CLEAR_FROM_CART,
+  payload: id
+});
 
 export const fetchAllItemsInCartThunk = (id) => (dispatch) => {
   return axios
@@ -57,7 +62,7 @@ export const addToCartThunk = (item, ownProps) => (dispatch) => {
 
 export const editQuantityThunk = (id, itemId, quantity)=>(dispatch)=>{
   return axios
-    .put(`/api/order_items/${id}/${itemId}`, quantity)
+    .put(`/api/order_items/${id}/${itemId}`, {quantity:quantity})
     .then((res) => res.data)
     .then((updatedQuantity) => {
       dispatch(editItemInCart(updatedQuantity));
@@ -65,11 +70,19 @@ export const editQuantityThunk = (id, itemId, quantity)=>(dispatch)=>{
     .catch((err) => console.log(err));
 }
 
-export const  deleteItemThunk = (id,itemId) => (dispatch) => {
+export const  deleteItemFromCartThunk = (id,itemId) => (dispatch) => {
   return axios
     .delete(`/api/order_items/${id}/${itemId}`)
     .then((res) => res.data)
-    .then(() => dispatch(removeFromCart(id)))
+    .then(() => dispatch(removeFromCart(itemId)))
+    .catch((err) => console.log(err));
+};
+
+export const clearFromCartThunk = (id) => (dispatch) => {
+  return axios
+    .delete(`/api/order_items/${id}/`)
+    .then((res) => res.data)
+    .then(() => dispatch(clearFromCart(id)))
     .catch((err) => console.log(err));
 };
 
@@ -82,15 +95,15 @@ const Reducer = (state = [], action) => {
         const cartStatus = state.map((item) =>
         item.itemId === action.payload.itemId ? action.payload : item 
       );                  
-      }
-         
+      } 
     case EDIT_ITEM_IN_CART:
       return state.map((item) =>
         item.itemId === action.payload.itemId ? action.payload: item 
       ); 
     case REMOVE_FROM_CART:
-      console.log(action.payload)
-      return state;           
+      return state.filter((item) => item.itemId !== action.payload);  
+    case CLEAR_FROM_CART:
+      return state.filter((cart) => cart.id === action.payload)      
     default:
         return state;
         

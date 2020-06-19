@@ -9,22 +9,32 @@ class EditShoppingCartContainer extends Component {
       this.state = {
           quantity:1,
           orderId:1,
-          itemId:1,
+          itemId:0,
+          edit:false,
       };
     }
+
+    handleChange = (e) => {
+      this.setState({quantity: e.target.value});
+    };
+
     handleEditQuantity=(itemId)=>{
-        //(id, itemId, quantity)
-    // handleEditQuantity=(itemId, quantity)=>{
-    //this.props.editQuantity({orderId:this.state.orderId,itemId:itemId,quantity:quantity});
-    console.log(itemId)
-      this.props.editQuantity(this.props.orderId,itemId,1);
+      this.props.editQuantity(this.props.orderId,itemId,this.state.quantity);
+      this.setState({edit:false})
+    }
+
+    edit=()=>{
+      this.setState({edit:!this.state.edit})
     }
   
     render() {
       return (
         <>
-        
-          <EditShoppingCartView itemId={this.props.itemId} handleEditQuantity={this.handleEditQuantity}/>
+          {!this.state.edit?<button onClick={this.edit}>edit #</button>:""}
+          {this.state.edit?<EditShoppingCartView 
+              itemId={this.props.itemId} 
+              handleChange = {this.handleChange}
+              handleEditQuantity={this.handleEditQuantity}/>:""}
         </>
       );
     }
