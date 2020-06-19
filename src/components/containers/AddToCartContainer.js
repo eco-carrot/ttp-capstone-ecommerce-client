@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { addToCartThunk, createOrderThunk } from "../../thunks";
+import { addToCartThunk, createOrderThunk, fetchAllItemsInCartThunk } from "../../thunks";
 import { AddToCartView } from "../views";
 
 class AddToCartContainer extends Component {
@@ -10,17 +10,23 @@ class AddToCartContainer extends Component {
     this.state = {
         quantity:1,
         orderId:1,
-        itemId:1,
+        itemId: this.props.id,
         //shoppingCart=false, 
     };
   }
 
-  handleAddToCart=(itemId)=>{
+  componentDidMount() {
+    console.log("AddToCart container mount");
+    this.props.fetchAllItemsInCart(this.state.orderId);
+  }
+
+  handleAddToCart=()=>{
     //this.setState({orderId: this.props.match.params.id})
     // (shoppingCart)?(this.setState({orderId:this.props})):this.props.createOrder();
     
     // orderId need to be changed later on, depending on order associated with user
-    this.props.addToCart({ orderId: this.state.orderId, itemId:itemId, quantity: this.state.quantity});
+    this.props.addToCart({ orderId: this.state.orderId, itemId: this.state.itemId, quantity: this.state.quantity});
+    this.props.fetchAllItemsInCart(this.state.orderId);
   }
 
   render() {
@@ -40,7 +46,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch, ownProps) => ({
     addToCart: (id,itemId,quantity) => dispatch(addToCartThunk(id,itemId,quantity)),
-    createOrder: (ownProps) => dispatch(createOrderThunk(ownProps))
+    createOrder: (ownProps) => dispatch(createOrderThunk(ownProps)),
+    fetchAllItemsInCart: (id) => dispatch(fetchAllItemsInCartThunk(id))
 });
 
 

@@ -13,9 +13,9 @@ const fetchAllItemsInCart = (items) => {
   };
 };
 
-export const addToCart = (id) => ({
+export const addToCart = (item) => ({
   type: ADD_TO_CART,
-  payload: id
+  payload: item
 });
 
 export const editItemInCart = (item) => ({
@@ -41,7 +41,8 @@ export const addToCartThunk = (item, ownProps) => (dispatch) => {
     .post(`/api/order_items/`, item)
     .then((res) => res.data)
     .then((newCart) => {
-      const updatedCart = { ...newCart, items: [] };
+      const updatedCart = { ...newCart};
+      console.log(updatedCart.orderId);      
       dispatch(addToCart(updatedCart));
       ownProps.history.push(`/order_items/${newCart.id}`);
     })
@@ -65,7 +66,12 @@ const Reducer = (state = [], action) => {
     case FETCH_CART:
       return action.payload
     case ADD_TO_CART:
-      return [...state, action.payload]     
+      {
+        const cartStatus = state.map((item) =>
+        item.itemId === action.payload.itemId ? action.payload : item 
+      );                  
+      }
+         
     case EDIT_ITEM_IN_CART:
       return state.map((item) =>
         item.itemId === action.payload.itemId ? action.payload : item 
