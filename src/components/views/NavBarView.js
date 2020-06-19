@@ -10,7 +10,7 @@ const NavBarView = (props) => {
       <Link to="/login" className="nav-link">
         Login
       </Link>
-      <Link to="/shoppingCart" className="nav-link">
+      <Link to={"/shoppingCart/1"}  className="nav-link">
         Shopping Cart
       </Link>
     </nav>
