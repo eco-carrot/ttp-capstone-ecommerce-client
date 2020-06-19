@@ -22,7 +22,7 @@ const AllItemsInCartView = (props) => {
 };
 
 AllItemsInCartView.propTypes = {
-  allItemsInCart: PropTypes.array.isRequired,  
+  shoppingCart: PropTypes.array.isRequired,  
 };
 
 export default AllItemsInCartView;
