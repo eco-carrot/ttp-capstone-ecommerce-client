@@ -29,10 +29,15 @@ export const me = () => async dispatch => {
   }
 };
 
-export const auth = (email, password, method) => async dispatch => {
+export const auth = (userObj, method) => async dispatch => {
   let res;
+  console.log(method)
   try {
-    res = await axios.post(`http://localhost:3001/auth/${method}`, { email, password }, { withCredentials: true });
+    res = await axios.post(`/auth/${method}`, 
+        { lastName: userObj.lastName,
+          firstName: userObj.firstName,
+          email: userObj.email, 
+          password: userObj.password}, { withCredentials: true });
   }
   catch (authError) {
     return dispatch(getUser({ error: authError }));
@@ -60,6 +65,7 @@ export const logout = () => async dispatch => {
 const reducer = (state = {}, action) => {
   switch (action.type) {
     case GET_USER:
+      console.log("Get user payloaddd",action.payload)
       return action.payload;
     case REMOVE_USER:
       return {};
