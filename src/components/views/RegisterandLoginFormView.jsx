@@ -6,8 +6,20 @@ const RegisterandLoginFormView = props => {
 
   return (
     <div>
-      {isLoggedIn ? `The current logged in user is: ${userEmail}` : ""}
-      {name==="login"?
+      {isLoggedIn ? 
+        <>
+        <h3>Good Day!</h3>
+        <h2>{userEmail}</h2>
+        <h4>You have successfully Logged In, </h4>
+        <h4>We hope you enjoy your Shopping Experience!</h4>
+        <Link to={`/`}>
+                <button>Click Here to Return to Home</button>
+        </Link>
+        <Link to={`/logout/`}>
+                <button>Log Out</button>
+        </Link>
+        </> 
+        : <>{name==="login"?
         <form onSubmit={handleSubmit} name={name}>
         <h3>Log in </h3>
         <div>
@@ -34,7 +46,7 @@ const RegisterandLoginFormView = props => {
       </form>
       :
       <form onSubmit={handleSubmit} name={name}>
-        <h3>Sign Up Page</h3>
+        <h3>Sign Up </h3>
         <div>
           <label>
             <small>First Name</small>
@@ -68,7 +80,8 @@ const RegisterandLoginFormView = props => {
           </Link>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
-      </form>}
+      </form>}</>}
+      
       
     </div>
   );
