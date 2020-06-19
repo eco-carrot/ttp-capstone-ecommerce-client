@@ -4,13 +4,12 @@ import React from "react";
 const EditShoppingCartView = (props) => {
     
     return (
-      <div className="edit-cart">   
+      <table className="edit-cart">   
         <td><input type="number" placeholder="Enter Quantity:" onChange={props.handleChange}/></td>
         <td><button type="button" onClick={()=>props.handleEditQuantity(props.itemId)}>
             Edit Quantity
         </button></td>
-      
-      </div>
+      </table>
     );
   };
 export default EditShoppingCartView;
