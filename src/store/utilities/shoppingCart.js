@@ -4,6 +4,7 @@ import axios from 'axios';
 const FETCH_CART = 'FETCH_CART';
 const ADD_TO_CART = 'ADD_TO_CART';
 const EDIT_ITEM_IN_CART = 'EDIT_ITEM_IN_CART';
+const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 
 // Action Creator
 const fetchAllItemsInCart = (items) => {
@@ -21,6 +22,11 @@ export const addToCart = (id) => ({
 export const editItemInCart = (item) => ({
   type: EDIT_ITEM_IN_CART,
   payload: item
+});
+
+export const removeFromCart = (id) => ({
+  type: REMOVE_FROM_CART,
+  payload: id
 });
 
 
@@ -58,7 +64,13 @@ export const editQuantityThunk = (id, itemId, quantity)=>(dispatch)=>{
     .catch((err) => console.log(err));
 }
 
-
+export const  deleteItemThunk = (id,itemId) => (dispatch) => {
+  return axios
+    .delete(`/api/order_items/${id}/${itemId}`)
+    .then((res) => res.data)
+    .then(() => dispatch(removeFromCart(id)))
+    .catch((err) => console.log(err));
+};
 
 const Reducer = (state = [], action) => {
   switch (action.type) {
@@ -68,8 +80,11 @@ const Reducer = (state = [], action) => {
       return [...state, action.payload]     
     case EDIT_ITEM_IN_CART:
       return state.map((item) =>
-        item.itemId === action.payload.itemId ? action.payload : item 
-      );            
+        item.itemId === action.payload.itemId ? action.payload: item 
+      ); 
+    case REMOVE_FROM_CART:
+      console.log(action.payload)
+      return state;           
     default:
         return state;
         
