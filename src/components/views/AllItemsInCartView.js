@@ -6,7 +6,7 @@ const AllItemsInCartView = (props) => {
 
   return (
     <tbody className="all-items-in-Cart">
-      {props.shoppingCart.map((item) => (
+      {props.shoppingCart.length?props.shoppingCart.map((item) => (
             <tr key={item.itemId}>
                 <td>Product : {props.allItems.map((eachitem => eachitem.id=== item.itemId ? eachitem.name: "" ))}</td>
                 <td>Quantity: {item.quantity}{"  "}</td>
@@ -16,7 +16,7 @@ const AllItemsInCartView = (props) => {
                       onClick={()=>props.handledeleteitem(item.orderId,item.itemId)}>
                         Remove Item
                     </button></td>
-                </tr>))}
+                </tr>)):""}
     </tbody>
   );
 };

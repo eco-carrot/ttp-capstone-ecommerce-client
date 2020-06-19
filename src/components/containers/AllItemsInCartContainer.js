@@ -1,10 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchAllItemsInCartThunk, fetchAllItemsThunk, deleteItemFromCartThunk} from "../../thunks";
+import { fetchAllItemsInCartThunk, fetchAllItemsThunk, deleteItemFromCartThunk, clearFromCartThunk} from "../../thunks";
 import { AllItemsInCartView } from "../views";
 
 class AllItemsInCartContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        orderId:1,
+        //we need to change this later on to match with appropriate user
+    };
+  }
   componentDidMount() {
     this.props.fetchAllItemsInCart(this.props.match.params.id);
     this.props.fetchAllItems();
@@ -16,14 +23,17 @@ class AllItemsInCartContainer extends Component {
 
   render() {
     return (
-      <table> 
-        {console.log("shoppingCart", this.props.shoppingCart)}
-          <AllItemsInCartView
-            shoppingCart={this.props.shoppingCart}
-            allItems={this.props.allItems}
-            handledeleteitem={this.handledeleteitem}
-            />
-      </table>
+      <div>
+        <table> 
+          {console.log("shoppingCartttt", this.props.shoppingCart)}
+            <AllItemsInCartView
+              shoppingCart={this.props.shoppingCart}
+              allItems={this.props.allItems}
+              handledeleteitem={this.handledeleteitem}
+              />
+        </table>
+        <button onClick={()=>this.props.clearFromCart(this.state.orderId)}>Clear All Items From Cart</button>
+      </div>
     );
   }
 }
@@ -41,7 +51,8 @@ const mapDispatch = (dispatch) => {
   return {
     fetchAllItemsInCart: (id) => dispatch(fetchAllItemsInCartThunk(id)),
     fetchAllItems: () => dispatch(fetchAllItemsThunk()),
-    deleteItemFromCart: (id, itemId) => dispatch(deleteItemFromCartThunk(id, itemId))
+    deleteItemFromCart: (id, itemId) => dispatch(deleteItemFromCartThunk(id, itemId)),
+    clearFromCart:(id)=> dispatch(clearFromCartThunk(id))
   };
 };
 
