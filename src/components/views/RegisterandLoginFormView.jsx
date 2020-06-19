@@ -6,7 +6,8 @@ const RegisterandLoginFormView = props => {
   return (
     <div>
       {isLoggedIn ? `The current logged in user is: ${userEmail}` : ""}
-      <form onSubmit={handleSubmit} name={name}>
+      {name==="login"?
+        <form onSubmit={handleSubmit} name={name}>
         <div>
           <label htmlFor="email">
             <small>Email</small>
@@ -24,6 +25,38 @@ const RegisterandLoginFormView = props => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
+      :
+      <form onSubmit={handleSubmit} name={name}>
+        <div>
+          <label>
+            <small>First Name</small>
+          </label>
+          <input name="firstName" type="text" onChange={handleChange} />
+        </div>
+        <div>
+          <label htmlFor="email">
+            <small>Last Name</small>
+          </label>
+          <input name="lastName" type="text" onChange={handleChange} />
+        </div>
+        <div>
+          <label htmlFor="email">
+            <small>Email</small>
+          </label>
+          <input name="email" type="text" onChange={handleChange} />
+        </div>
+        <div>
+          <label htmlFor="password">
+            <small>Password</small>
+          </label>
+          <input name="password" type="password" onChange={handleChange} />
+        </div>
+        <div>
+          <button type="submit">{displayName}</button>
+        </div>
+        {error && error.response && <div> {error.response.data} </div>}
+      </form>}
+      
     </div>
   );
 };
