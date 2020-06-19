@@ -13,7 +13,11 @@ const AllItemsInCartView = (props) => {
                 <td>Quantity: {item.quantity}{"  "}</td>
                 <td>Price: ${((item.price)/100).toFixed(2)}</td>
                 <td><EditShoppingCartContainer itemId={item.itemId} orderId={item.orderId}/></td>
-            </tr>))}
+                <td><button type="button" 
+                      onClick={()=>props.handledeleteitem(item.itemId)}>
+                        Remove Item
+                    </button></td>
+                </tr>))}
       </tbody>
     </div>
   );

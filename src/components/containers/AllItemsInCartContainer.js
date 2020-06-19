@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchAllItemsInCartThunk, fetchAllItemsThunk } from "../../thunks";
+import { fetchAllItemsInCartThunk, fetchAllItemsThunk,deleteItemThunk } from "../../thunks";
 import { AllItemsInCartView } from "../views";
 
 class AllItemsInCartContainer extends Component {
@@ -10,12 +10,18 @@ class AllItemsInCartContainer extends Component {
     this.props.fetchAllItems();
   }
 
+  handledeleteitem=(id)=>{
+    this.props.deleteItem(id);
+  }
+
   render() {
     return (
       <div> 
+        {console.log("shoppingCart", this.props.shoppingCart)}
           <AllItemsInCartView
             shoppingCart={this.props.shoppingCart}
             allItems={this.props.allItems}
+            handledeleteitem={this.handledeleteitem}
             />
       </div>
     );
@@ -35,6 +41,7 @@ const mapDispatch = (dispatch) => {
   return {
     fetchAllItemsInCart: (id) => dispatch(fetchAllItemsInCartThunk(id)),
     fetchAllItems: () => dispatch(fetchAllItemsThunk()),
+    deleteItem: (id) => dispatch(deleteItemThunk(id))
   };
 };
 
