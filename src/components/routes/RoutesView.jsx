@@ -25,6 +25,7 @@ const RoutesView = () => {
 
       <Route exact path="/login" component={Login} />
       <Route exact path="/signup" component={Signup} />
+      <Route exact path="/logout" component={AllItemsContainer} />
       <Route component={Login} />
 
     </Switch>
