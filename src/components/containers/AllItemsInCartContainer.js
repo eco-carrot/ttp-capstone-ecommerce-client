@@ -9,6 +9,7 @@ class AllItemsInCartContainer extends Component {
     super(props);
     this.state = {
         orderId:1,
+        open: true,
         //we need to change this later on to match with appropriate user
     };
   }
@@ -21,18 +22,31 @@ class AllItemsInCartContainer extends Component {
     this.props.deleteItemFromCart(id, itemId);
   }
 
+  submitOrder =()=>{
+    this.setState({open:false})
+  }
+
+  createCart=()=>{
+    this.props.createOrder();
+  }
+
   render() {
+    if (!this.state.open){
+      this.createCart();
+    }
     return (
       <div>
-        <table> 
-          {console.log("shoppingCartttt", this.props.shoppingCart)}
-            <AllItemsInCartView
-              shoppingCart={this.props.shoppingCart}
-              allItems={this.props.allItems}
-              handledeleteitem={this.handledeleteitem}
-              />
-        </table>
+        {this.state.open?
+          <table> 
+              <AllItemsInCartView
+                shoppingCart={this.props.shoppingCart}
+                allItems={this.props.allItems}
+                handledeleteitem={this.handledeleteitem}
+                />
+          </table>
+          :"Your Order has been Submited"}
         <button onClick={()=>this.props.clearFromCart(this.state.orderId)}>Clear All Items From Cart</button>
+        <button onClick={this.submitOrder}>Submit Order</button>
       </div>
     );
   }
@@ -53,6 +67,7 @@ const mapDispatch = (dispatch) => {
     fetchAllItems: () => dispatch(fetchAllItemsThunk()),
     deleteItemFromCart: (id, itemId) => dispatch(deleteItemFromCartThunk(id, itemId)),
     clearFromCart:(id)=> dispatch(clearFromCartThunk(id))
+    
   };
 };
 
