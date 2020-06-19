@@ -7,6 +7,8 @@ class RegisterandLoginFormContainer extends Component {
   constructor() {
     super();
     this.state = {
+      lastName:"",
+      firstName:"",
       email: "",
       password: ""
     }
@@ -19,7 +21,7 @@ class RegisterandLoginFormContainer extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const formName = event.target.name;
-    this.props.loginOrSignup(this.state.email, this.state.password, formName);
+    this.props.loginOrSignup( this.state, formName);
   }
 
   render() {
@@ -62,9 +64,9 @@ const mapSignup = state => {
 // Map dispatch to props;
 const mapDispatch = dispatch => {
   return {
-    loginOrSignup: (email, password, formName) => dispatch(auth(email, password, formName))
+    loginOrSignup: (userObj, formName) => dispatch(auth(userObj, formName))
   }
 };
 
-export const Login = connect(mapLogin, mapDispatch)(RegisterandLoginFormView);
-export const Signup = connect(mapSignup, mapDispatch)(RegisterandLoginFormView);
+export const Login = connect(mapLogin, mapDispatch)(RegisterandLoginFormContainer);
+export const Signup = connect(mapSignup, mapDispatch)(RegisterandLoginFormContainer);
