@@ -16,14 +16,14 @@ class AllItemsInCartContainer extends Component {
 
   render() {
     return (
-      <div> 
+      <table> 
         {console.log("shoppingCart", this.props.shoppingCart)}
           <AllItemsInCartView
             shoppingCart={this.props.shoppingCart}
             allItems={this.props.allItems}
             handledeleteitem={this.handledeleteitem}
             />
-      </div>
+      </table>
     );
   }
 }

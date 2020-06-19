@@ -5,10 +5,9 @@ import {EditShoppingCartContainer} from "../containers"
 const AllItemsInCartView = (props) => {
 
   return (
-    <div className="all-items-in-Cart">      
-      <tbody>
+    <tbody className="all-items-in-Cart">
       {props.shoppingCart.map((item) => (
-            <tr key={item.orderId}>
+            <tr key={item.itemId}>
                 <td>Product : {props.allItems.map((eachitem => eachitem.id=== item.itemId ? eachitem.name: "" ))}</td>
                 <td>Quantity: {item.quantity}{"  "}</td>
                 <td>Price: ${((item.price)/100).toFixed(2)}</td>
@@ -18,8 +17,7 @@ const AllItemsInCartView = (props) => {
                         Remove Item
                     </button></td>
                 </tr>))}
-      </tbody>
-    </div>
+    </tbody>
   );
 };
 
