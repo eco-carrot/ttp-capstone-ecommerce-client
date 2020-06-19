@@ -18,9 +18,9 @@ export const addToCart = (id) => ({
   payload: id
 });
 
-export const editItemInCart = (id) => ({
+export const editItemInCart = (item) => ({
   type: EDIT_ITEM_IN_CART,
-  payload: id
+  payload: item
 });
 
 
@@ -68,7 +68,7 @@ const Reducer = (state = [], action) => {
       return [...state, action.payload]     
     case EDIT_ITEM_IN_CART:
       return state.map((item) =>
-        item.itemId === action.payload.id ? action.payload : item
+        item.itemId === action.payload.itemId ? action.payload : item 
       );            
     default:
         return state;
