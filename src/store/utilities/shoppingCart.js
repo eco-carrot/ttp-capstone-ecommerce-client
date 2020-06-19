@@ -57,7 +57,7 @@ export const addToCartThunk = (item, ownProps) => (dispatch) => {
 
 export const editQuantityThunk = (id, itemId, quantity)=>(dispatch)=>{
   return axios
-    .put(`/api/order_items/${id}/${itemId}`, quantity)
+    .put(`/api/order_items/${id}/${itemId}`, {quantity:quantity})
     .then((res) => res.data)
     .then((updatedQuantity) => {
       dispatch(editItemInCart(updatedQuantity));
@@ -85,11 +85,12 @@ const Reducer = (state = [], action) => {
       }
          
     case EDIT_ITEM_IN_CART:
+      console.log("edited item payload",action.payload)
       return state.map((item) =>
         item.itemId === action.payload.itemId ? action.payload: item 
       ); 
     case REMOVE_FROM_CART:
-      console.log(action.payload)
+      
       return state;           
     default:
         return state;
