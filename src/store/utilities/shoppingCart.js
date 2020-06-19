@@ -65,11 +65,11 @@ export const editQuantityThunk = (id, itemId, quantity)=>(dispatch)=>{
     .catch((err) => console.log(err));
 }
 
-export const  deleteItemThunk = (id,itemId) => (dispatch) => {
+export const  deleteItemFromCartThunk = (id,itemId) => (dispatch) => {
   return axios
     .delete(`/api/order_items/${id}/${itemId}`)
     .then((res) => res.data)
-    .then(() => dispatch(removeFromCart(id)))
+    .then(() => dispatch(removeFromCart(itemId)))
     .catch((err) => console.log(err));
 };
 
@@ -85,13 +85,11 @@ const Reducer = (state = [], action) => {
       }
          
     case EDIT_ITEM_IN_CART:
-      console.log("edited item payload",action.payload)
       return state.map((item) =>
         item.itemId === action.payload.itemId ? action.payload: item 
       ); 
     case REMOVE_FROM_CART:
-      
-      return state;           
+      return state.filter((item) => item.itemId !== action.payload);          
     default:
         return state;
         

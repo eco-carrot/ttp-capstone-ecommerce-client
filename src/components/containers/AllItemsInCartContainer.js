@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchAllItemsInCartThunk, fetchAllItemsThunk,deleteItemThunk } from "../../thunks";
+import { fetchAllItemsInCartThunk, fetchAllItemsThunk, deleteItemFromCartThunk} from "../../thunks";
 import { AllItemsInCartView } from "../views";
 
 class AllItemsInCartContainer extends Component {
@@ -10,8 +10,8 @@ class AllItemsInCartContainer extends Component {
     this.props.fetchAllItems();
   }
 
-  handledeleteitem=(id)=>{
-    this.props.deleteItem(id);
+  handledeleteitem=(id, itemId)=>{
+    this.props.deleteItemFromCart(id, itemId);
   }
 
   render() {
@@ -41,7 +41,7 @@ const mapDispatch = (dispatch) => {
   return {
     fetchAllItemsInCart: (id) => dispatch(fetchAllItemsInCartThunk(id)),
     fetchAllItems: () => dispatch(fetchAllItemsThunk()),
-    deleteItem: (id) => dispatch(deleteItemThunk(id))
+    deleteItemFromCart: (id, itemId) => dispatch(deleteItemFromCartThunk(id, itemId))
   };
 };
 
