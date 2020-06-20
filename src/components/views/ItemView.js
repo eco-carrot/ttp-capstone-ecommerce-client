@@ -15,12 +15,16 @@ const ItemView = (props) => {
       <p>Details: {props.item.description}</p>   
       <p>In Stock: {props.item.quantity}</p>    
 
-      <Link className="edit-link" to={`/items/${props.item.id}/edit`}>
+      {props.user.role === "admin" ? 
+      <div> <Link className="edit-link" to={`/items/${props.item.id}/edit`}>
         Edit
       </Link>
       <button onClick={() => props.handleDelete(props.item.id)}>
         Delete
-      </button>
+      </button> 
+      </div>
+      : ""}
+      
     </>
   );
 };
