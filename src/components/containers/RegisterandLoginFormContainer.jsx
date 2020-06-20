@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { RegisterandLoginFormView } from "../views";
 
-import { auth, logout, fetchOpenOrderThunk, fetchAllItemsInCartThunk} from "../../thunks";
+import { auth, logout, fetchOpenOrderThunk, fetchAllItemsInCartThunk, clearShoppingCartOnLogOut} from "../../thunks";
 
 
 class RegisterandLoginFormContainer extends Component {
@@ -28,8 +28,11 @@ class RegisterandLoginFormContainer extends Component {
     await this.props.fetchAllItemsInCart(this.props.order.id); 
   }
 
-  handleLogout = () => {
-
+  handleLogOut = async () => {
+    console.log("triggerrrred")
+    await this.props.clearShoppingCartOnLogOut();
+    await this.props.logout();
+    await this.props.history.push('/')
   }
 
   render() {
@@ -40,7 +43,7 @@ class RegisterandLoginFormContainer extends Component {
         error={this.props.error}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
-        handleLogOut={this.props.logout}
+        handleLogOut={this.handleLogOut}
         isLoggedIn={this.props.isLoggedIn}
         userEmail={this.props.userEmail}
       />
@@ -74,15 +77,23 @@ const mapSignup = state => {
   };
 };
 
+const mapState = (state) => {
+  return {
+    shoppingCart: state.shoppingCart,
+  };
+};
+
 // Map dispatch to props;
 const mapDispatch = dispatch => {
   return {
     loginOrSignup: (userObj, formName) => dispatch(auth(userObj, formName)),
     logout : () => dispatch(logout()),
     fetchAllItemsInCart: (id) => dispatch(fetchAllItemsInCartThunk(id)),
-    fetchOpenOrder: (id) => dispatch(fetchOpenOrderThunk(id))
+    fetchOpenOrder: (id) => dispatch(fetchOpenOrderThunk(id)),
+    clearShoppingCartOnLogOut: () => dispatch(clearShoppingCartOnLogOut())
   }
 };
 
+export default connect(mapState, mapDispatch)(RegisterandLoginFormContainer);
 export const Login = connect(mapLogin, mapDispatch)(RegisterandLoginFormContainer);
 export const Signup = connect(mapSignup, mapDispatch)(RegisterandLoginFormContainer);

@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom"
 
 const RegisterandLoginFormView = props => {
-  const { name, displayName, handleSubmit, error, handleChange, isLoggedIn, userEmail } = props;
+  const { name, displayName, handleSubmit, error, handleChange, isLoggedIn, userEmail, handleLogOut} = props;
 
   return (
     <div>
@@ -14,8 +14,8 @@ const RegisterandLoginFormView = props => {
         <h4>We hope you enjoy your Shopping Experience!</h4>
         <Link to={`/`}>
                 <button>Click Here to Return to Home</button>
-                <button onClick={()=>props.handleLogOut()}>Log Out</button>
         </Link>
+        <button onClick={handleLogOut}>Log Out</button>
         </> 
         : <>{name==="login"?
         <form onSubmit={handleSubmit} name={name}>

@@ -6,6 +6,7 @@ const ADD_TO_CART = 'ADD_TO_CART';
 const EDIT_ITEM_IN_CART = 'EDIT_ITEM_IN_CART';
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 const CLEAR_FROM_CART = "CLEAR_FROM_CART";
+const CLEAR_CART = 'CLEAR_CART'
 
 // Action Creator
 const fetchAllItemsInCart = (items) => {
@@ -34,6 +35,10 @@ export const clearFromCart = (id) => ({
   type: CLEAR_FROM_CART,
   payload: id
 });
+
+export const clearShoppingCartOnLogOut =()=>({
+  type: CLEAR_CART,
+})
 
 export const fetchAllItemsInCartThunk = (id) => (dispatch) => {
   return axios
@@ -103,7 +108,9 @@ const Reducer = (state = [], action) => {
     case REMOVE_FROM_CART:
       return state.filter((item) => item.itemId !== action.payload);  
     case CLEAR_FROM_CART:
-      return state.filter((cart) => cart.id === action.payload)      
+      return state.filter((cart) => cart.id === action.payload);
+    case CLEAR_CART:
+      return {};      
     default:
         return state;
         
