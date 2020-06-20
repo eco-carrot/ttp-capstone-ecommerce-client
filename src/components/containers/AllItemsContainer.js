@@ -13,11 +13,12 @@ class AllItemsContainer extends Component {
   clearOrder=()=>{
     this.props.clearOrder();
   }
+  
 
   render() {
     return (
       <div> 
-      {this.props.user.id?"":this.clearOrder()}     
+      {this.props.user.id?"":this.clearOrder()}           
       {console.log(this.props.allItems)}
       <AllItemsView
         allItems={this.props.allItems}
@@ -40,6 +41,7 @@ const mapDispatch = (dispatch) => {
   return {
     fetchAllItems: () => dispatch(fetchAllItemsThunk()),
     clearOrder: () => dispatch(clearOrder()),
+    
   };
 };
 

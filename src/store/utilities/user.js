@@ -3,6 +3,8 @@ import axios from "axios";
 // ACTION TYPES
 const GET_USER = "GET_USER";
 const REMOVE_USER = "REMOVE_USER";
+const LOGOUT_CART = "LOGOUT_CART";
+const LOGOUT_ORDER = "LOGOUT_ORDER";
 
 // ACTION CREATORS
 const getUser = user => { 
@@ -14,9 +16,10 @@ const getUser = user => {
 
 const removeUser = () => { 
   return { 
-    type: REMOVE_USER 
+    type: REMOVE_USER,     
   }
 }
+
 
 // THUNK CREATORS
 export const me = () => async dispatch => {
@@ -54,7 +57,7 @@ export const auth = (userObj, method) => async dispatch => {
 export const logout = () => async dispatch => {
   try {
     await axios.post(`/auth/logout`, { withCredentials: true });
-    dispatch(removeUser());
+    await dispatch(removeUser());    
   }
   catch (err) {
     console.error(err);
@@ -68,7 +71,7 @@ const reducer = (state = {}, action) => {
       console.log("Get user payloaddd",action.payload)
       return action.payload;
     case REMOVE_USER:
-      return {};
+      return {};    
     default:
       return state;
   }
