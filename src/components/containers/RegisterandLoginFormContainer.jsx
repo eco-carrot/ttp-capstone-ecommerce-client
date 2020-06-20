@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { RegisterandLoginFormView } from "../views";
+<<<<<<< HEAD
 import { auth, logout } from "../../thunks";
+=======
+import { auth, fetchOpenOrderThunk, fetchAllItemsInCartThunk} from "../../thunks";
+>>>>>>> b6d57c2052c334918bc1b1a26983e2b2e0d4831d
 
 class RegisterandLoginFormContainer extends Component {
   constructor() {
@@ -18,10 +22,12 @@ class RegisterandLoginFormContainer extends Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
     const formName = event.target.name;
-    this.props.loginOrSignup( this.state, formName);
+    await this.props.loginOrSignup( this.state, formName);
+    await this.props.fetchOpenOrder(this.props.user.id);    
+    await this.props.fetchAllItemsInCart(this.props.order.id); 
   }
 
   handleLogout = () => {
@@ -51,7 +57,11 @@ const mapLogin = state => {
     displayName: "Login",
     error: state.user.error,
     isLoggedIn: !!state.user.id,
-    userEmail: state.user.email
+    userEmail: state.user.email,
+    shoppingCart: state.shoppingCart,
+    allItems: state.allItems,
+    user: state.user,
+    order: state.order
   };
 };
 
@@ -70,7 +80,12 @@ const mapSignup = state => {
 const mapDispatch = dispatch => {
   return {
     loginOrSignup: (userObj, formName) => dispatch(auth(userObj, formName)),
+<<<<<<< HEAD
     logout : () => dispatch(logout())
+=======
+    fetchAllItemsInCart: (id) => dispatch(fetchAllItemsInCartThunk(id)),
+    fetchOpenOrder: (id) => dispatch(fetchOpenOrderThunk(id))
+>>>>>>> b6d57c2052c334918bc1b1a26983e2b2e0d4831d
   }
 };
 
