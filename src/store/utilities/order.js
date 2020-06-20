@@ -3,6 +3,7 @@ import axios from "axios";
 // Action Types
 const FETCH_ORDER = "FETCH_ORDER";
 const FETCH_OPEN_ORDER = "FETCH_OPEN_ORDER";
+const CLEAR_ORDER = 'CLEAR_ORDER'
 
 // Action Creators
 
@@ -19,6 +20,12 @@ const fetchOpenOrder = (item) => {
       payload: item,
     };
   };
+
+export const clearOrder = () => {
+  return {
+    type: CLEAR_ORDER,
+  };
+ };
   
 
 
@@ -50,6 +57,8 @@ const reducer = (state = {}, action) => {
       return action.payload;  
     case FETCH_OPEN_ORDER:
         return action.payload;  
+    case CLEAR_ORDER:
+        return {};
     default:
       return state;
   }
