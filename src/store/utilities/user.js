@@ -53,7 +53,7 @@ export const auth = (userObj, method) => async dispatch => {
 
 export const logout = () => async dispatch => {
   try {
-    await axios.get(`/auth/logout`, { withCredentials: true });
+    await axios.post(`/auth/logout`, { withCredentials: true });
     dispatch(removeUser());
   }
   catch (err) {
