@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchAllItemsThunk } from "../../thunks";
+import { fetchAllItemsThunk, clearOrder } from "../../thunks";
 import { AllItemsView } from "../views";
 
 class AllItemsContainer extends Component {
@@ -10,9 +10,14 @@ class AllItemsContainer extends Component {
     this.props.fetchAllItems();
   }
 
+  clearOrder=()=>{
+    this.props.clearOrder();
+  }
+
   render() {
     return (
-      <div>      
+      <div> 
+      {this.props.user.id?"":this.clearOrder()}     
       {console.log(this.props.allItems)}
       <AllItemsView
         allItems={this.props.allItems}
@@ -25,6 +30,7 @@ class AllItemsContainer extends Component {
 // Map state to props;
 const mapState = (state) => {
   return {
+    user: state.user,
     allItems: state.allItems,
   };
 };
@@ -33,6 +39,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchAllItems: () => dispatch(fetchAllItemsThunk()),
+    clearOrder: () => dispatch(clearOrder()),
   };
 };
 
