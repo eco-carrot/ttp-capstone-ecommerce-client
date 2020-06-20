@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { RegisterandLoginFormView } from "../views";
-<<<<<<< HEAD
-import { auth, logout } from "../../thunks";
-=======
-import { auth, fetchOpenOrderThunk, fetchAllItemsInCartThunk} from "../../thunks";
->>>>>>> b6d57c2052c334918bc1b1a26983e2b2e0d4831d
+
+import { auth, logout, fetchOpenOrderThunk, fetchAllItemsInCartThunk} from "../../thunks";
+
 
 class RegisterandLoginFormContainer extends Component {
   constructor() {
@@ -80,12 +78,9 @@ const mapSignup = state => {
 const mapDispatch = dispatch => {
   return {
     loginOrSignup: (userObj, formName) => dispatch(auth(userObj, formName)),
-<<<<<<< HEAD
-    logout : () => dispatch(logout())
-=======
+    logout : () => dispatch(logout()),
     fetchAllItemsInCart: (id) => dispatch(fetchAllItemsInCartThunk(id)),
     fetchOpenOrder: (id) => dispatch(fetchOpenOrderThunk(id))
->>>>>>> b6d57c2052c334918bc1b1a26983e2b2e0d4831d
   }
 };
 
