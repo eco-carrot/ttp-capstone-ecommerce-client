@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { RegisterandLoginFormView } from "../views";
-import { auth } from "../../thunks";
+import { auth, fetchOpenOrderThunk, fetchAllItemsInCartThunk} from "../../thunks";
 
 class RegisterandLoginFormContainer extends Component {
   constructor() {
@@ -18,10 +18,12 @@ class RegisterandLoginFormContainer extends Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
     const formName = event.target.name;
-    this.props.loginOrSignup( this.state, formName);
+    await this.props.loginOrSignup( this.state, formName);
+    await this.props.fetchOpenOrder(this.props.user.id);    
+    await this.props.fetchAllItemsInCart(this.props.order.id); 
   }
 
   render() {
@@ -46,7 +48,11 @@ const mapLogin = state => {
     displayName: "Login",
     error: state.user.error,
     isLoggedIn: !!state.user.id,
-    userEmail: state.user.email
+    userEmail: state.user.email,
+    shoppingCart: state.shoppingCart,
+    allItems: state.allItems,
+    user: state.user,
+    order: state.order
   };
 };
 
@@ -64,7 +70,9 @@ const mapSignup = state => {
 // Map dispatch to props;
 const mapDispatch = dispatch => {
   return {
-    loginOrSignup: (userObj, formName) => dispatch(auth(userObj, formName))
+    loginOrSignup: (userObj, formName) => dispatch(auth(userObj, formName)),
+    fetchAllItemsInCart: (id) => dispatch(fetchAllItemsInCartThunk(id)),
+    fetchOpenOrder: (id) => dispatch(fetchOpenOrderThunk(id))
   }
 };
 

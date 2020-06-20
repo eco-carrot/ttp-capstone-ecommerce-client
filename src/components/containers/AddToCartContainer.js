@@ -9,7 +9,7 @@ class AddToCartContainer extends Component {
     super(props);
     this.state = {
         quantity:1,
-        orderId:1,
+        orderId: this.props.order.id,
         itemId: this.props.id,
         //shoppingCart=false, 
     };
@@ -41,6 +41,7 @@ class AddToCartContainer extends Component {
 const mapState = (state) => {
     return {
       shoppingCart: state.shoppingCart,
+      order: state.order
     };
   };
 
