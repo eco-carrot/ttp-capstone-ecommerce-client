@@ -21,10 +21,11 @@ const RoutesView = () => {
 
       <Route exact path="/items/:id/edit" component={EditItemFormContainer} />
       
-      <Route exact path="/shoppingCart" component={AllItemsInCartContainer} />
+      <Route exact path="/shoppingCart/:id" component={AllItemsInCartContainer} />
 
       <Route exact path="/login" component={Login} />
       <Route exact path="/signup" component={Signup} />
+      <Route exact path="/logout" component={AllItemsContainer} />
       <Route component={Login} />
 
     </Switch>
