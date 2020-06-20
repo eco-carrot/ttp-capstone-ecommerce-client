@@ -42,17 +42,20 @@ class AllItemsInCartContainer extends Component {
     }
     return (
       <div>
-        {this.state.open?
-          <table> 
+        {this.props.user.id?
+          <div> 
+             <table> 
               <AllItemsInCartView
                 shoppingCart={this.props.shoppingCart}
                 allItems={this.props.allItems}
                 handledeleteitem={this.handledeleteitem}
                 />
-          </table>
-          :"Your Order has been Submited"}
-        <button onClick={()=>this.props.clearFromCart(this.state.orderId)}>Clear All Items From Cart</button>
-        <button onClick={this.submitOrder}>Submit Order</button>
+          </table>          
+          <button onClick={()=>this.props.clearFromCart(this.state.orderId)}>Clear All Items From Cart</button>
+          <button onClick={this.submitOrder}>Submit Order</button>            
+          </div>
+          :"Please Log In to view you shopping cart"}
+         
       </div>
     );
   }
