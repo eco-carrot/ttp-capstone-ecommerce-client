@@ -1,21 +1,27 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchAllItemsInCartThunk, fetchAllItemsThunk, deleteItemFromCartThunk, clearFromCartThunk} from "../../thunks";
+import { fetchAllItemsInCartThunk, 
+  fetchAllItemsThunk, 
+  deleteItemFromCartThunk,
+  clearFromCartThunk,   
+fetchOpenOrderThunk} from "../../thunks";
 import { AllItemsInCartView } from "../views";
 
 class AllItemsInCartContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        orderId:1,
+        orderId: this.props.order.id,
         open: true,
         //we need to change this later on to match with appropriate user
     };
   }
-  componentDidMount() {
-    this.props.fetchAllItemsInCart(this.props.match.params.id);
-    this.props.fetchAllItems();
+  async componentDidMount() {
+    await this.props.fetchOpenOrder(this.props.user.id);
+    this.setState({orderId: this.props.order.id})
+    await this.props.fetchAllItemsInCart(this.props.order.id);
+    await this.props.fetchAllItems();    
   }
 
   handledeleteitem=(id, itemId)=>{
@@ -57,6 +63,8 @@ const mapState = (state) => {
   return {
     shoppingCart: state.shoppingCart,
     allItems: state.allItems,
+    user: state.user,
+    order: state.order
   };
 };
 
@@ -66,8 +74,8 @@ const mapDispatch = (dispatch) => {
     fetchAllItemsInCart: (id) => dispatch(fetchAllItemsInCartThunk(id)),
     fetchAllItems: () => dispatch(fetchAllItemsThunk()),
     deleteItemFromCart: (id, itemId) => dispatch(deleteItemFromCartThunk(id, itemId)),
-    clearFromCart:(id)=> dispatch(clearFromCartThunk(id))
-    
+    clearFromCart:(id)=> dispatch(clearFromCartThunk(id)),
+    fetchOpenOrder: (id) => dispatch(fetchOpenOrderThunk(id))
   };
 };
 
