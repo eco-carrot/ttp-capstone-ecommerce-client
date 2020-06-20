@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { RegisterandLoginFormView } from "../views";
-import { auth } from "../../thunks";
+import { auth, logout } from "../../thunks";
 
 class RegisterandLoginFormContainer extends Component {
   constructor() {
@@ -24,6 +24,10 @@ class RegisterandLoginFormContainer extends Component {
     this.props.loginOrSignup( this.state, formName);
   }
 
+  handleLogout = () => {
+
+  }
+
   render() {
     return (
       <RegisterandLoginFormView
@@ -32,6 +36,7 @@ class RegisterandLoginFormContainer extends Component {
         error={this.props.error}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
+        handleLogOut={this.props.logout}
         isLoggedIn={this.props.isLoggedIn}
         userEmail={this.props.userEmail}
       />
@@ -64,7 +69,8 @@ const mapSignup = state => {
 // Map dispatch to props;
 const mapDispatch = dispatch => {
   return {
-    loginOrSignup: (userObj, formName) => dispatch(auth(userObj, formName))
+    loginOrSignup: (userObj, formName) => dispatch(auth(userObj, formName)),
+    logout : () => dispatch(logout())
   }
 };
 

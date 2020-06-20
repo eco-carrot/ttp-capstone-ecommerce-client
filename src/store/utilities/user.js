@@ -53,7 +53,7 @@ export const auth = (userObj, method) => async dispatch => {
 
 export const logout = () => async dispatch => {
   try {
-    await axios.delete("http://localhost:3001/auth/logout", { withCredentials: true });
+    await axios.delete("/auth/logout", { withCredentials: true });
     dispatch(removeUser());
   }
   catch (err) {

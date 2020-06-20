@@ -14,9 +14,7 @@ const RegisterandLoginFormView = props => {
         <h4>We hope you enjoy your Shopping Experience!</h4>
         <Link to={`/`}>
                 <button>Click Here to Return to Home</button>
-        </Link>
-        <Link to={`/logout/`}>
-                <button>Log Out</button>
+                <button onClick={()=>props.handleLogOut()}>Log Out</button>
         </Link>
         </> 
         : <>{name==="login"?
