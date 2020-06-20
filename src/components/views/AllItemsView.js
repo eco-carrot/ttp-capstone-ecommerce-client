@@ -20,9 +20,11 @@ const AllItemsView = (props) => {
         ))}
       </div>
       
+      {props.user.role === "admin" ? 
       <Link to="/items/new" className="add-item">
         Add New Item
-      </Link>
+      </Link> : ""}
+      
 
 
     </div>
