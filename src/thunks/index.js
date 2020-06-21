@@ -5,6 +5,7 @@ export * from "../store/utilities/item";
 
 export * from "../store/utilities/shoppingCart";
 export * from "../store/utilities/allOrders";
+export * from "../store/utilities/orderHistory";
 export * from "../store/utilities/order";
 
 export * from '../store/utilities/user';

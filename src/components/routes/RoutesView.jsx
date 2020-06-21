@@ -6,7 +6,9 @@ import {
   ItemContainer,
   AddItemFormContainer,
   EditItemFormContainer,
-  AllItemsInCartContainer,  
+  AllItemsInCartContainer, 
+  OrderHistoryContainer, 
+  OrderDetailsContainer,
   Login, Signup
 } from "../containers";
 
@@ -20,6 +22,8 @@ const RoutesView = () => {
       <Route exact path="/items/:id" component={ItemContainer} />
 
       <Route exact path="/items/:id/edit" component={EditItemFormContainer} />
+      <Route exact path="/orderHistory" component={OrderHistoryContainer} />
+      <Route exact path="/orderHistory/:id" component={OrderDetailsContainer} />
       
       <Route exact path="/shoppingCart" component={AllItemsInCartContainer} />
 

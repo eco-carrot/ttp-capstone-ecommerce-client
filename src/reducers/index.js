@@ -5,6 +5,6 @@ export { default as item } from "../store/utilities/item";
 export {default as order} from "../store/utilities/order";
 
 export { default as shoppingCart } from "../store/utilities/shoppingCart";
-
+export {default as orderHistory} from "../store/utilities/orderHistory";
 export { default as user } from '../store/utilities/user';
 

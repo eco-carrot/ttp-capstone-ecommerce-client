@@ -36,8 +36,7 @@ class RegisterandLoginFormContainer extends Component {
     await this.props.fetchAllItemsInCart(this.props.order.id); 
   }
 
-  handleLogOut = async () => {
-    console.log("triggerrrred")
+  handleLogOut = async () => {    
     await this.props.clearShoppingCartOnLogOut();
     await this.props.logout();
     await this.props.history.push('/')

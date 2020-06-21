@@ -43,7 +43,7 @@ export const fetchOrderThunk = (id) => (dispatch) => {
 };
 
 export const fetchOpenOrderThunk = (userId) => (dispatch) => {
-    console.log(userId);
+    
     return axios
       .get(`/api/user/${userId}/orders/open`)
       .then((res) => res.data)

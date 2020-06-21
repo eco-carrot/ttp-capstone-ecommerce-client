@@ -2,6 +2,7 @@ import axios from 'axios';
 // const FETCH_ORDER = 'FETCH_ORDER';
 const CREATE_ORDER = 'CREATE_ORDER';
 
+
 // export const fetchOrder = (order) => {
 //     return {
 //       type: FETCH_ORDER,
@@ -9,18 +10,14 @@ const CREATE_ORDER = 'CREATE_ORDER';
 //     };
 //   };
 
+
+
 export const createOrder = (order) => ({
     type: CREATE_ORDER,
     payload: order,
 });
 
-//   export const fetchOrderThunk = (id) => (dispatch) => {
-//     return axios
-//       .get(`/api/orders/${id}`)
-//       .then((res) => res.data)
-//       .then((order) => dispatch(fetchOrder(order)))
-//       .catch((err) => console.log(err));
-//   };
+ 
 
 export const createOrderThunk = (ownProps) => (dispatch) => {
   return axios
@@ -40,7 +37,7 @@ const Reducer = (state = [], action) => {
         return [
         ...state,
         action.payload,
-      ]             
+      ]                 
       default:
           return state;
     }

@@ -4,6 +4,11 @@ import { Link } from "react-router-dom";
 const NavBarView = (props) => {
   return (
     <nav>
+      <div>
+        {props.name? 
+        <p className="nav-link">Hello {props.name}!</p>
+        : ""}
+      </div>
       <Link to="/" className="nav-link">
         Home
       </Link>
@@ -12,6 +17,9 @@ const NavBarView = (props) => {
       </Link>
       <Link to={"/shoppingCart"}  className="nav-link">
         Shopping Cart
+      </Link>
+      <Link to={"/orderHistory"}  className="nav-link">
+        Order History
       </Link>
     </nav>
   );

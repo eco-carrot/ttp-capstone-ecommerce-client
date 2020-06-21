@@ -23,7 +23,7 @@ class ItemContainer extends Component {
   
 
   render() {
-    console.log(this.props)
+    
     return (
       <ItemView
         item={this.props.item}
