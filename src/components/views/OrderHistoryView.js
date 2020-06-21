@@ -7,7 +7,7 @@ const OrderHistoryView = (props) => {
   return (    
       
     <tbody className="all-orders-in-history">
-      {props.orderHistory?props.orderHistory.map((order) => (
+      {props.orderHistory.length?props.orderHistory.map((order) => (
             <tr key={order.orderId}>
                
                 <td>Order ID: {order.orderId}{"  "}</td>
