@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom"
 
 const RegisterandLoginFormView = props => {
-  const { name, displayName, handleSubmit, error, handleChange, isLoggedIn, userEmail, handleLogOut} = props;
+  const { name, displayName, handleSubmit, error, handleChange, isLoggedIn, userEmail, handleLogOut,handleSignUp} = props;
 
   return (
     <div>
@@ -43,7 +43,7 @@ const RegisterandLoginFormView = props => {
         {error && error.response && <div> {error.response.data} </div>}
       </form>
       :
-      <form onSubmit={handleSubmit} name={name}>
+      <form onSubmit={handleSignUp} name={name}>
         <h3>Sign Up </h3>
         <div>
           <label>

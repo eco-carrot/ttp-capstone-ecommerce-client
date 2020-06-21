@@ -20,6 +20,12 @@ class RegisterandLoginFormContainer extends Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
+  handleSignUp = async(event) =>{
+    event.preventDefault();
+    const formName = event.target.name;
+    await this.props.loginOrSignup( this.state, formName);
+  }
+
   handleSubmit = async (event) => {
     event.preventDefault();
     const formName = event.target.name;
@@ -44,6 +50,7 @@ class RegisterandLoginFormContainer extends Component {
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
         handleLogOut={this.handleLogOut}
+        handleSignUp={this.handleSignUp}
         isLoggedIn={this.props.isLoggedIn}
         userEmail={this.props.userEmail}
       />
