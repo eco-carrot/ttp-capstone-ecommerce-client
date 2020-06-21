@@ -58,10 +58,10 @@ class AllItemsInCartContainer extends Component {
       price: ((this.getTotalCartAmount()/100).toFixed(2))
     }
 
-    console.log(newOrderObject);
+    
     const checkoutResponse = await cartCheckoutThunk(token, newOrderObject);
     await this.componentDidMount();
-    console.log(checkoutResponse.status);
+    
     if(checkoutResponse.status === 'success')
     {
       toast.success('Success! Check your email for details');      
@@ -80,27 +80,34 @@ class AllItemsInCartContainer extends Component {
     const sKey = "pk_test_51GwBqvHGbCAGvRQnT3TXxQaWpO2epJ1hvLM9Ca6FqN2ggZteGIqrDieMYfHey9qrMqRU8aICRqzSLFVG7dtlfpK600MOfpNC4Q";
     return (
       <div>
+        <h1>Shopping Cart</h1>
         {this.props.user.id?
-          <div> 
-            <ToastContainer/>
-            {this.state.inCheckout? <div>Please wait while we complete your transaction...</div>:
-              <div className="display-or-form"> 
-                <table> 
-                <AllItemsInCartView
-                  shoppingCart={this.props.shoppingCart}
-                  allItems={this.props.allItems}
-                  handledeleteitem={this.handledeleteitem}
-                  />
-                </table>          
-                <button onClick={()=>this.props.clearFromCart(this.state.orderId)}>Clear All Items From Cart</button>                  
-                <StripeCheckout
-                  stripeKey = {sKey}
-                  token = {this.handleToken}
-                  billingAddress
-                  shippingAddress
-                  amount = {this.getTotalCartAmount()}          
-                />        
-              </div>
+          <div>            
+            {this.props.shoppingCart.length? 
+            <div>
+              <ToastContainer/>
+              {this.state.inCheckout? <div>Please wait while we complete your transaction...</div>:
+                <div className="display-or-form> 
+                  <table> 
+                  <AllItemsInCartView
+                    shoppingCart={this.props.shoppingCart}
+                    allItems={this.props.allItems}
+                    handledeleteitem={this.handledeleteitem}
+                    />
+                  </table>          
+                  <button onClick={()=>this.props.clearFromCart(this.state.orderId)}>Clear All Items From Cart</button>                  
+                  <StripeCheckout
+                    stripeKey = {sKey}
+                    token = {this.handleToken}
+                    billingAddress
+                    shippingAddress
+                    amount = {this.getTotalCartAmount()}          
+                  />        
+                </div>
+              }
+            </div>
+            :
+            "Your Shopping Cart is empty"
             }
           </div> 
           :

@@ -50,8 +50,7 @@ export const clearShoppingCartOnLogOut =()=>({
 export const cartCheckoutThunk = (token, product) => {
   return axios
   .post('api/checkout', {token, product})
-  .then((res) => {
-    console.log(res.data.status);
+  .then((res) => {    
     return res.data;
   })
   .catch((err) => console.log(err));
@@ -60,8 +59,7 @@ export const cartCheckoutThunk = (token, product) => {
 export const fetchAllItemsInCartThunk = (id) => (dispatch) => {
   return axios
     .get(`/api/order_items/${id}`)
-    .then((res) => {
-      console.log(res.data);
+    .then((res) => {      
       return res.data;
     })
     .then((items) => dispatch(fetchAllItemsInCart(items)))
@@ -74,8 +72,7 @@ export const addToCartThunk = (item, ownProps) => (dispatch) => {
     .post(`/api/order_items/`, item)
     .then((res) => res.data)
     .then((newCart) => {
-      const updatedCart = { ...newCart};
-      console.log(updatedCart.orderId);      
+      const updatedCart = { ...newCart};          
       dispatch(addToCart(updatedCart));
       ownProps.history.push(`/order_items/${newCart.id}`);
     })

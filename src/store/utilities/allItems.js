@@ -16,7 +16,7 @@ export const fetchAllItemsThunk = () => (dispatch) => {
   return axios
     .get("/api/items")
     .then((res) => {
-      console.log(res.data);
+      
       return res.data;
     
     })

@@ -86,8 +86,7 @@ const reducer = (state = {}, action) => {
       return state.map((item) =>
         item.id === action.payload.id ? action.payload : item
       );
-    case DELETE_ITEM:
-      console.log(action.payload);
+    case DELETE_ITEM:      
       return state.filter((item) => item.id !== action.payload);
     default:
       return state;
