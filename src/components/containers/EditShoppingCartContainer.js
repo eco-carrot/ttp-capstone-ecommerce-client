@@ -30,7 +30,7 @@ class EditShoppingCartContainer extends Component {
     render() {
       return (
         <>
-          {!this.state.edit?<button onClick={this.edit}>edit #</button>:""}
+          {!this.state.edit?<button onClick={this.edit}>edit quantity</button>:""}
           {this.state.edit?<EditShoppingCartView 
               itemId={this.props.itemId} 
               handleChange = {this.handleChange}

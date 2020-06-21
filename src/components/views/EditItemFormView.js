@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const EditItemFormView = (props) => {
   return (
     <div>
-      <form onSubmit={props.handleSubmit}>
+      <form onSubmit={props.handleSubmit} className="display-or-form">
         <div>
           Item Name:{" "}
           <input

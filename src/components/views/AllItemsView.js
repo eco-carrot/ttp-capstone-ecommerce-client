@@ -6,27 +6,36 @@ import {AddToCartContainer} from "../containers"
 const AllItemsView = (props) => {
 
   return (
-    <div className="all-items">      
-      <div>
+    <div className="wrap">      
+      <div className="map-item">
         {props.allItems.map((item) => (
             <div key={item.id}>
-              <Link to={`/items/${item.id}`}>
-                <h1>{item.name}</h1>
-              </Link>
-              <img src={item.imageURL} width="150px" alt={item.name} />   
-              <p>Price: ${((item.price)/100).toFixed(2)}</p>
+              <div className="item-detail">
+                <Link to={`/items/${item.id}`} >
+                  <h1>{item.name}</h1>
+                </Link>
+              </div>
+              <div className="flip-card">      
+                <div className="flip-card-inner">
+                  <div className="flip-card-front">
+                    <img src={item.imageURL} width="300px" height="300px" alt={item.name} />
+                  </div>
+                  <div className="flip-card-back" >
+                    <h3>Category: {item.category}</h3>
+                      <p>Details: {item.description}</p>   
+                      <p>In Stock: {item.quantity}</p>              
+                  </div>
+                </div>
+              </div>   
+              <p className="display-or-form">Price: ${((item.price)/100).toFixed(2)}</p>
               <AddToCartContainer id={item.id}/>
             </div>
         ))}
       </div>
-      
       {props.user.role === "admin" ? 
-      <Link to="/items/new" className="add-item">
-        Add New Item
-      </Link> : ""}
-      
-
-
+        <Link to="/items/new" className="add-item">
+          <button>Add New Item</button>
+        </Link> : ""}
     </div>
   );
 };

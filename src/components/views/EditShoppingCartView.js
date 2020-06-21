@@ -4,10 +4,10 @@ import React from "react";
 const EditShoppingCartView = (props) => {
     
     return (
-      <table className="edit-cart">   
-        <td><input type="number" placeholder="Enter Quantity:" onChange={props.handleChange}/></td>
+      <table>   
+        <td><input type="number" onChange={props.handleChange}/></td>
         <td><button type="button" onClick={()=>props.handleEditQuantity(props.itemId)}>
-            Edit Quantity
+            Update Quantity
         </button></td>
       </table>
     );

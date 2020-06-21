@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import "../../app/App.css"
 const NavBarView = (props) => {
   return (
-    <nav>
+
+    <nav className="nav-bar">
       <div>
         {props.name? 
         <p className="nav-link">Hello {props.name}!</p>
@@ -16,7 +17,7 @@ const NavBarView = (props) => {
         Login
       </Link>
       <Link to={"/shoppingCart"}  className="nav-link">
-        Shopping Cart
+        Cart
       </Link>
       <Link to={"/orderHistory"}  className="nav-link">
         Order History
