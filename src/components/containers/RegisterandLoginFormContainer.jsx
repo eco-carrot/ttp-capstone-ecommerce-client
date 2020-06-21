@@ -24,6 +24,8 @@ class RegisterandLoginFormContainer extends Component {
     event.preventDefault();
     const formName = event.target.name;
     await this.props.loginOrSignup( this.state, formName);
+    await this.props.fetchOpenOrder(this.props.user.id);    
+    await this.props.fetchAllItemsInCart(this.props.order.id); 
   }
 
   handleSubmit = async (event) => {
