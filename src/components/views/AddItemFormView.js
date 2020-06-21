@@ -4,9 +4,13 @@ import PropTypes from "prop-types";
 const AddItemFormView = (props) => {
   return (
     <div>
-      <form onSubmit={props.handleSubmit}>
-        <div>
-          Item Name:{" "}
+      <form onSubmit={props.handleSubmit} className="display-or-form">
+        <div className="col-25">
+          <label>
+            Item Name:{" "}
+          </label>
+        </div>
+        <div className="col-75">
           <input
             value={props.name}
             name="name"
@@ -14,8 +18,12 @@ const AddItemFormView = (props) => {
             required
           ></input>
         </div>
-        <div>
-          Price:{" "}
+        <div className="col-25">
+          <label>
+            Price:{" "}
+          </label>
+        </div>
+        <div className="col-75">
           <input
             value={props.price}
             name="price"
@@ -25,8 +33,12 @@ const AddItemFormView = (props) => {
             required
           ></input>
         </div>
-        <div>
-          Quantity:{" "}
+        <div className="col-25">
+          <label>
+            Quantity:{" "}
+          </label>
+        </div>
+        <div className="col-75">
           <input
             value={props.quantity}
             name="quantity"
@@ -35,8 +47,12 @@ const AddItemFormView = (props) => {
             required
           ></input>
         </div>
-        <div>
-          Category:{" "}
+        <div className="col-25">
+          <label>
+            Category:{" "}
+          </label>
+        </div>
+        <div className="col-75">
           <input
             value={props.category}
             name="category"
@@ -44,8 +60,12 @@ const AddItemFormView = (props) => {
             required
           ></input>
         </div>
-        <div>
-          Description:{" "}
+        <div className="col-25">
+          <label>
+            Description:{" "}
+          </label>
+        </div>
+        <div className="col-75">
           <input
             value={props.description}
             name="description"
@@ -53,8 +73,12 @@ const AddItemFormView = (props) => {
             required
           ></input>
         </div>
-        <div>
-          Image URL:{" "}
+        <div className="col-25">
+          <label>
+            Image URL:{" "}
+          </label>
+        </div>
+        <div className="col-75">
           <input
             value={props.imageURL}
             name="imageUrl"

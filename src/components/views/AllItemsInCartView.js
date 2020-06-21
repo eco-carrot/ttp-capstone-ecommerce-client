@@ -7,8 +7,7 @@ import {EditShoppingCartContainer} from "../containers"
 const AllItemsInCartView = (props) => {
   let cartTotal = 0;
   return (
-    
-    <tbody className="all-items-in-Cart">
+    <tbody>
       {props.shoppingCart.length?props.shoppingCart.map((item) => (
             <tr key={item.itemId}>
                 <td>Product : {props.allItems.map((eachitem => eachitem.id=== item.itemId ? eachitem.name: "" ))}</td>

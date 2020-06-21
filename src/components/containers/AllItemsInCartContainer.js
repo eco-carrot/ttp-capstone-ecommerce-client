@@ -84,7 +84,7 @@ class AllItemsInCartContainer extends Component {
           <div> 
             <ToastContainer/>
             {this.state.inCheckout? <div>Please wait while we complete your transaction...</div>:
-              <div> 
+              <div className="display-or-form"> 
                 <table> 
                 <AllItemsInCartView
                   shoppingCart={this.props.shoppingCart}
@@ -103,7 +103,8 @@ class AllItemsInCartContainer extends Component {
               </div>
             }
           </div> 
-          :"Please Log In to view your shopping cart"}
+          :
+          <div className="display-or-form"> Please Log In to view your shopping cart</div>}
          
       </div>
     );

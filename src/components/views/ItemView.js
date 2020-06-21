@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const ItemView = (props) => {
   return ( 
-    <>   
+    <div className="display-or-form">   
       <img src={props.item.imageURL} width="300px" 
       alt={props.item.name} />         
       <h1>{props.item.name}</h1>
@@ -16,16 +16,17 @@ const ItemView = (props) => {
       <p>In Stock: {props.item.quantity}</p>    
 
       {props.user.role === "admin" ? 
-      <div> <Link className="edit-link" to={`/items/${props.item.id}/edit`}>
-        Edit
-      </Link>
+      <div> 
+        <Link className="edit-link" to={`/items/${props.item.id}/edit`}>
+          <button>Edit</button>
+        </Link>
       <button onClick={() => props.handleDelete(props.item.id)}>
         Delete
       </button> 
       </div>
       : ""}
       
-    </>
+    </div>
   );
 };
 
