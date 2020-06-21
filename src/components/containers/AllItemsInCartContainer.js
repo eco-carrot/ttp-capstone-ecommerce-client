@@ -64,6 +64,7 @@ class AllItemsInCartContainer extends Component {
     
     if(checkoutResponse.status === 'success')
     {
+      console.log("success");
       toast.success('Success! Check your email for details');      
     }
     else {
@@ -82,12 +83,12 @@ class AllItemsInCartContainer extends Component {
       <div>
         <h1>Shopping Cart</h1>
         {this.props.user.id?
-          <div>            
+          <div>   
+            <ToastContainer/>         
             {this.props.shoppingCart.length? 
-            <div>
-              <ToastContainer/>
+            <div>              
               {this.state.inCheckout? <div>Please wait while we complete your transaction...</div>:
-                <div className="display-or-form> 
+                <div className="display-or-form"> 
                   <table> 
                   <AllItemsInCartView
                     shoppingCart={this.props.shoppingCart}
