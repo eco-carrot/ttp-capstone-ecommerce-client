@@ -81,7 +81,7 @@ class AllItemsInCartContainer extends Component {
     const sKey = "pk_test_51GwBqvHGbCAGvRQnT3TXxQaWpO2epJ1hvLM9Ca6FqN2ggZteGIqrDieMYfHey9qrMqRU8aICRqzSLFVG7dtlfpK600MOfpNC4Q";
     return (
       <div>
-        <h1>Shopping Cart</h1>
+        <div className="display-or-form"><h1>Shopping Cart</h1></div>
         {this.props.user.id?
           <div>   
             <ToastContainer/>         

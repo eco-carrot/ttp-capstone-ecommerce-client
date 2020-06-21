@@ -20,23 +20,18 @@ class OrderHistoryContainer extends Component {
   render() {    
     return (
       <div>
-          <h1>Order History</h1>  
+        <div className="display-or-form"><h1>Order History</h1> </div>
         {this.props.user.id?
-          <div>    
-                        
+          <div>            
               <div> 
                 <table> 
                 <OrderHistoryView
                   orderHistory={this.props.orderHistory}                  
                   />
-                </table>          
-                              
-                       
+                </table>   
               </div>
-            
           </div> 
-          :"Please Log In to see your order history"}
-         
+          :<div className="display-or-form">Please Log In to see your order history</div>}
       </div>
     );
   }

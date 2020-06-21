@@ -6,7 +6,7 @@ const OrderHistoryView = (props) => {
   
   return (    
       
-    <tbody className="all-orders-in-history">
+    <tbody className="display-or-form">
       {props.orderHistory.length?props.orderHistory.map((order) => (
             <tr key={order.orderId}>
                
@@ -19,7 +19,7 @@ const OrderHistoryView = (props) => {
                 </Link>
                 </td>
                 </tr>))
-                :"No Order History"}               
+                :<div className="display-or-form">No Order History</div>}               
     </tbody>
   );
 };

@@ -36,7 +36,7 @@ render() {
     return (
         
         <div>
-            <h1>Order Details</h1>
+            <div className="display-or-form"><h1>Order Details</h1></div>
             {this.props.user.id?
 
             <div>
