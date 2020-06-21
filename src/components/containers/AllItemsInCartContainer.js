@@ -35,11 +35,7 @@ class AllItemsInCartContainer extends Component {
 
   handledeleteitem=(id, itemId)=>{
     this.props.deleteItemFromCart(id, itemId);
-  }
-
-  submitOrder =()=>{    
-    this.setState({open:false});
-  }
+  }  
 
   getTotalCartAmount = () =>{
     let totalCartAmount = 0;
@@ -96,8 +92,7 @@ class AllItemsInCartContainer extends Component {
                   handledeleteitem={this.handledeleteitem}
                   />
                 </table>          
-                <button onClick={()=>this.props.clearFromCart(this.state.orderId)}>Clear All Items From Cart</button>
-                <button onClick={this.submitOrder}>Submit Order</button>    
+                <button onClick={()=>this.props.clearFromCart(this.state.orderId)}>Clear All Items From Cart</button>                  
                 <StripeCheckout
                   stripeKey = {sKey}
                   token = {this.handleToken}
@@ -108,7 +103,7 @@ class AllItemsInCartContainer extends Component {
               </div>
             }
           </div> 
-          :"Please Log In to view you shopping cart"}
+          :"Please Log In to view your shopping cart"}
          
       </div>
     );

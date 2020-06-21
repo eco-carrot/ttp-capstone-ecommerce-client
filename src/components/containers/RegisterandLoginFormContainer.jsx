@@ -29,7 +29,7 @@ class RegisterandLoginFormContainer extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     const formName = event.target.name;
-    await this.props.loginOrSignup( this.state, formName);
+    await this.props.loginOrSignup( this.state, formName);    
     await this.props.fetchOpenOrder(this.props.user.id);    
     await this.props.fetchAllItemsInCart(this.props.order.id); 
   }
@@ -80,7 +80,9 @@ const mapSignup = state => {
     displayName: "Sign Up",
     error: state.user.error,
     isLoggedIn: !!state.user.id,
-    userEmail: state.user.email
+    userEmail: state.user.email,
+    user: state.user,
+    order: state.order
   };
 };
 
