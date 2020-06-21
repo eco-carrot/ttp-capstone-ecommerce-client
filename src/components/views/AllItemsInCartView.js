@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+
+
 import {EditShoppingCartContainer} from "../containers"
 const AllItemsInCartView = (props) => {
   let cartTotal = 0;
@@ -22,6 +24,7 @@ const AllItemsInCartView = (props) => {
                 </tr>))
                 :""}
                 Cart Total : {cartTotal}
+                
     </tbody>
   );
 };

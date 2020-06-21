@@ -7,6 +7,7 @@ const EDIT_ITEM_IN_CART = 'EDIT_ITEM_IN_CART';
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 const CLEAR_FROM_CART = "CLEAR_FROM_CART";
 const CLEAR_CART = 'CLEAR_CART'
+const CHECKOUT = 'CHECKOUT';
 
 // Action Creator
 const fetchAllItemsInCart = (items) => {
@@ -15,6 +16,12 @@ const fetchAllItemsInCart = (items) => {
     payload: items,
   };
 };
+
+export const cartCheckout = () => {
+  return {
+    type: CHECKOUT
+  }
+}
 
 export const addToCart = (item) => ({
   type: ADD_TO_CART,
@@ -39,6 +46,16 @@ export const clearFromCart = (id) => ({
 export const clearShoppingCartOnLogOut =()=>({
   type: CLEAR_CART,
 })
+
+export const cartCheckoutThunk = (token, product) => {
+  return axios
+  .post('api/checkout', {token, product})
+  .then((res) => {
+    console.log(res.data.status);
+    return res.data;
+  })
+  .catch((err) => console.log(err));
+}
 
 export const fetchAllItemsInCartThunk = (id) => (dispatch) => {
   return axios
@@ -110,7 +127,9 @@ const Reducer = (state = [], action) => {
     case CLEAR_FROM_CART:
       return state.filter((cart) => cart.id === action.payload);
     case CLEAR_CART:
-      return {};      
+      return {};    
+    case CHECKOUT:
+      
     default:
         return state;
         
