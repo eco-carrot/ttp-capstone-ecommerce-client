@@ -19,7 +19,7 @@ class AllItemsContainer extends Component {
     return (
       <div> 
       {this.props.user.id?"":this.clearOrder()}           
-      {console.log(this.props.allItems)}
+      
       <AllItemsView
         allItems={this.props.allItems} user={this.props.user}
       />

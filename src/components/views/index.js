@@ -8,7 +8,8 @@ export {default as NavBarView} from "./NavBarView"
 export {default as AllItemsInCartView} from "./AllItemsInCartView"
 export {default as EditShoppingCartView} from "./EditShoppingCartView"
 export {default as AddToCartView} from "./AddToCartView"
-
+export {default as OrderHistoryView} from "./OrderHistoryView"
+export {default as OrderDetailsView} from "./OrderDetailsView"
 
 export { default as RegisterandLoginFormView} from "./RegisterandLoginFormView";
 

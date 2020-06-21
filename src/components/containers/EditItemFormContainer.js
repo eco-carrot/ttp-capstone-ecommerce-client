@@ -57,9 +57,9 @@ class EditItemFormContainer extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submit clicked");    
+      
     if (this.state.isValidName)    {
-      console.log("submit clicked - name valid");
+      
       this.setState({price: (this.state.price * 100)}, this.sendState);
     } 
   };
