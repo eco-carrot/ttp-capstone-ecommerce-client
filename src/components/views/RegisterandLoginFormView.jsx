@@ -16,7 +16,7 @@ const RegisterandLoginFormView = props => {
           <Link to={`/`}>
                   <button>Click Here to Return to Home</button>
           </Link>
-          {user.googleId.length?<GoogleOAuthLogOut/>:<button onClick={handleLogOut}>Log Out</button>}
+          {user.googleId?<GoogleOAuthLogOut/>:<button onClick={handleLogOut}>Log Out</button>}
         </div> 
         : <>{name==="login"?
         <form onSubmit={handleSubmit} name={name} className="display-or-form">
