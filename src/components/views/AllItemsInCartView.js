@@ -6,7 +6,8 @@ const AllItemsInCartView = (props) => {
   let cartTotal = 0;
   let totalQuantity = 0;
   return (
-    <tbody>
+    <table>
+      <tbody>
       <tr>
         <th>Product</th>
         <th>Quantity</th>
@@ -27,11 +28,14 @@ const AllItemsInCartView = (props) => {
                 <td hidden>{totalQuantity+= item.quantity}</td>
                 </tr>))
                 :""}
-                <th>Total Items:</th>
-                <th> {totalQuantity} </th>
-                <th>Cart Total: </th>
-                <th> ${cartTotal}</th>
-    </tbody>
+                <tr>
+                  <td>Total Items:</td>
+                  <td> {totalQuantity} </td>
+                  <td>Cart Total: </td>
+                  <td> ${cartTotal}</td>
+                </tr>
+      </tbody>
+    </table>
   );
 };
 

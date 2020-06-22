@@ -89,13 +89,13 @@ class AllItemsInCartContainer extends Component {
             <div>              
               {this.state.inCheckout? <div className="display-or-form"> Please wait while we complete your transaction...</div>:
                 <div className="display-or-form"> 
-                  <table> 
+                  <div> 
                   <AllItemsInCartView
                     shoppingCart={this.props.shoppingCart}
                     allItems={this.props.allItems}
                     handledeleteitem={this.handledeleteitem}
                     />
-                  </table>          
+                  </div>          
                   <button onClick={()=>this.props.clearFromCart(this.state.orderId)}>Clear All Items From Cart</button>                  
                   <StripeCheckout
                     stripeKey = {sKey}
