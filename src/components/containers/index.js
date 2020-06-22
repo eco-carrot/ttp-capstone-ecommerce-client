@@ -9,7 +9,6 @@ export { Login, Signup } from "./RegisterandLoginFormContainer";
 export {default as AllItemsInCartContainer} from "./AllItemsInCartContainer"
 export {default as EditShoppingCartContainer} from "./EditShoppingCartContainer"
 export {default as AddToCartContainer} from "./AddToCartContainer"
-export {default as OrderContainer} from "./OrderContainer"
 export {default as OrderHistoryContainer} from "./OrderHistoryContainer"
 export {default as OrderDetailsContainer} from "./OrderDetailsContainer"
 export {default as GoogleOAuth} from "./GoogleOAuth"
