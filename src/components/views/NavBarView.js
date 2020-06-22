@@ -18,7 +18,7 @@ const NavBarView = (props) => {
         <img 
           //img src : https://www.iconfinder.com/free_icons
           src={homeIcon} alt="home Icon" />
-        Home
+        Shop
       </Link>
       <Link to="/login" className="nav-link">
         <img 
