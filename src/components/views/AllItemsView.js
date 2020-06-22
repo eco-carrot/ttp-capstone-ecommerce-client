@@ -21,13 +21,14 @@ const AllItemsView = (props) => {
                     <img src={item.imageURL} width="300px" height="300px" alt={item.name} />
                   </div>
                   <div className="flip-card-back" >
+                    <h1>Price: ${((item.price)/100).toFixed(2)}</h1>
+                    <></>
                     <h3>Category: {item.category}</h3>
                       <p>Details: {item.description}</p>   
                       <p>In Stock: {item.quantity}</p>              
                   </div>
                 </div>
               </div>   
-              <p className="display" >Price: ${((item.price)/100).toFixed(2)}</p>
               <AddToCartContainer id={item.id}/>
             </div>
         ))}
