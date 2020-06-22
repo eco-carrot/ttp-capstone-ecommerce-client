@@ -20,7 +20,7 @@ const AllItemsView = (props) => {
                   <div className="flip-card-front">
                     <img src={item.imageURL} width="300px" height="300px" alt={item.name} />
                   </div>
-                  <div className="flip-card-back" >
+                  <div className={props.view?"flip-card-back2":"flip-card-back"} >
                     <h1>Price: ${((item.price)/100).toFixed(2)}</h1>
                     <></>
                     <h3>Category: {item.category}</h3>

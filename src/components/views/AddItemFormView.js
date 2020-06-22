@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const AddItemFormView = (props) => {
   return (
     <div>
-      <form onSubmit={props.handleSubmit} className="display-or-form">
+      <form onSubmit={props.handleSubmit} className={props.view?"greenView":"display-or-form"}>
         <div className="col-25">
           <label>
             Item Name:{" "}

@@ -9,7 +9,7 @@ const OrderDetailsView = (props) => {
     <div className="order-detais">    
     {props.orderIndex !== -1?  
     
-        <div className="display-or-form">
+        <div className={props.view?"greenView":"display-or-form"}>
             <h2>Order #{props.orderHistory[props.orderIndex].orderId}</h2>
             <p>Date: {(props.orderHistory[props.orderIndex].paidDate).substring(0,10)}</p>
             <h2>Items: </h2>

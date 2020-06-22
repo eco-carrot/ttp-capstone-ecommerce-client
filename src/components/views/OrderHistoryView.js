@@ -6,7 +6,7 @@ const OrderHistoryView = (props) => {
   
   return (    
       
-    <tbody className="display-or-form">
+    <tbody className={props.view?"greenView":"display-or-form"}>
       {props.orderHistory.length?props.orderHistory.map((order) => (
             <tr key={order.orderId}>
                
@@ -19,7 +19,7 @@ const OrderHistoryView = (props) => {
                 </Link>
                 </td>
                 </tr>))
-                :<tr className="display-or-form"><td>No Order History</td></tr>}               
+                :<tr className={props.view?"greenView":"display-or-form"}><td>No Order History</td></tr>}               
     </tbody>
   );
 };

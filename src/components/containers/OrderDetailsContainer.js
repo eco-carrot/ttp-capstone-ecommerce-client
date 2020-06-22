@@ -37,7 +37,7 @@ render() {
     return (
         
         <div>
-            <div className="display-or-form"><h1>Order Details</h1></div>
+            <div className={this.props.view?"greenView":"display-or-form"}><h1>Order Details</h1></div>
             {this.props.user.id?
 
             <div>
@@ -46,11 +46,12 @@ render() {
 
                 <OrderDetailsView
                 orderHistory={this.props.orderHistory}       
-                orderIndex = {this.state.orderIndex}              
+                orderIndex = {this.state.orderIndex}
+                view={this.props.view}      
                 />        
             }
             </div>
-            : <div className="display-or-form">Please Log In to view your order details</div>}
+            : <div className={this.props.view?"greenView":"display-or-form"}>Please Log In to view your order details</div>}
            
             
 
@@ -64,7 +65,8 @@ render() {
 const mapState = (state) => {
   return {
     orderHistory: state.orderHistory,   
-    user: state.user    
+    user: state.user,
+    view: state.view    
   };
 };
 

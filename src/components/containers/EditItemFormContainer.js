@@ -85,6 +85,7 @@ class EditItemFormContainer extends Component {
           imageURL={this.state.imageURL}        
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
+          view={this.props.view}
         />
       </>
     );
@@ -92,7 +93,9 @@ class EditItemFormContainer extends Component {
 }
 
 const mapState = (state) => {
-  return { item: state.item };
+  return { 
+    item: state.item,
+    view: state.view };
 };
 
 const mapDispatch = (dispatch, ownProps) => {

@@ -57,6 +57,7 @@ class RegisterandLoginFormContainer extends Component {
         handleSignUp={this.handleSignUp}
         isLoggedIn={this.props.isLoggedIn}
         userEmail={this.props.userEmail}
+        view={this.props.view} 
       />
     );
   }
@@ -73,7 +74,8 @@ const mapLogin = state => {
     shoppingCart: state.shoppingCart,
     allItems: state.allItems,
     user: state.user,
-    order: state.order
+    order: state.order,
+    view: state.view
   };
 };
 
@@ -86,14 +88,16 @@ const mapSignup = state => {
     isLoggedIn: !!state.user.id,
     userEmail: state.user.email,
     user: state.user,
-    order: state.order
+    order: state.order,
+    view: state.view
   };
 };
 
 const mapState = (state) => {
   return {
     shoppingCart: state.shoppingCart,
-    user: state.user
+    user: state.user,
+    view: state.view
   };
 };
 

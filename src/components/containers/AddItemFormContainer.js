@@ -76,12 +76,17 @@ class AddItemFormContainer extends Component {
           imageURL={this.state.imageURL}        
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
+          view={this.props.view}
         />
       </>
     );
   }
 }
-
+const mapState = (state) => {
+  return {
+    view: state.view,
+  };
+};
 const mapDispatch = (dispatch, ownProps) => {
   return {
     addItem: (item) => dispatch(addItemThunk(item, ownProps)),
@@ -92,4 +97,4 @@ AddItemFormContainer.propTypes = {
     addItem: PropTypes.func.isRequired,
 };
 
-export default connect(null, mapDispatch)(AddItemFormContainer);
+export default connect(mapState, mapDispatch)(AddItemFormContainer);
