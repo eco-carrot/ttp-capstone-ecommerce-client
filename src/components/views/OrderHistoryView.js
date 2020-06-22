@@ -19,7 +19,7 @@ const OrderHistoryView = (props) => {
                 </Link>
                 </td>
                 </tr>))
-                :<div className="display-or-form">No Order History</div>}               
+                :<tr className="display-or-form"><td>No Order History</td></tr>}               
     </tbody>
   );
 };
