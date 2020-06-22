@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import {ToastContainer, toast} from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-
+import { Link } from "react-router-dom";
 
 import { fetchAllItemsInCartThunk, 
   fetchAllItemsThunk, 
@@ -112,7 +112,7 @@ class AllItemsInCartContainer extends Component {
             }
           </div> 
           :
-          <div className="display-or-form"> Please Log In to view your shopping cart</div>}
+          <div className="display-or-form"><Link to="login" className="message-Link"> Please Log In to view your shopping cart</Link></div>}
          
       </div>
     );

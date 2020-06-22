@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fetchOrderHistoryThunk } from "../../thunks";
 import { OrderHistoryView } from "../views";
+import {Link} from "react-router-dom"
 
 class OrderHistoryContainer extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class OrderHistoryContainer extends Component {
                 </table>   
               </div>
           </div> 
-          :<div className="display-or-form">Please Log In to see your order history</div>}
+          :<div className="display-or-form"><Link to="login" className="message-Link">Please Log In to see your order history</Link></div>}
       </div>
     );
   }

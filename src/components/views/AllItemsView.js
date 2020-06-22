@@ -6,8 +6,8 @@ import {AddToCartContainer} from "../containers"
 const AllItemsView = (props) => {
 
   return (
-    <div className="wrap">      
-      <div className="map-item">
+    <div>      
+      <div>
         {props.allItems.map((item) => (
             <div key={item.id}>
               <div className="item-detail">

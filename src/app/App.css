@@ -39,13 +39,25 @@
   font-weight: bold;
 }
 
+.message-Link{
+  color: wheat;
+  margin-top: 2rem;
+  text-transform: Uppercase;
+  font-family: sans-serif;
+  font-weight: bold;
+  background-color: seashell;
+  text-shadow: 2px 2px 2px  black;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+}
+
 .flip-card {
   display: inline-block;
   background-color: transparent;
   justify-content: center;
   width: 300px;
   height: 300px;
-  border: 1px solid #f1f1f1;
+  border: none;
   perspective: 1000px; 
 }
 
