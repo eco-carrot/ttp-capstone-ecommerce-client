@@ -7,7 +7,6 @@ import {
 } from "../../thunks";
 
 import { ItemView } from "../views";
-import { user } from "../../reducers";
 
 class ItemContainer extends Component {
   componentDidMount() {

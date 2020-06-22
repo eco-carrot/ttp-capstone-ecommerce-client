@@ -3,8 +3,6 @@ import axios from "axios";
 // ACTION TYPES
 const GET_USER = "GET_USER";
 const REMOVE_USER = "REMOVE_USER";
-const LOGOUT_CART = "LOGOUT_CART";
-const LOGOUT_ORDER = "LOGOUT_ORDER";
 
 // ACTION CREATORS
 const getUser = user => { 
@@ -68,7 +66,6 @@ export const logout = () => async dispatch => {
 const reducer = (state = {}, action) => {
   switch (action.type) {
     case GET_USER:
-      
       return action.payload;
     case REMOVE_USER:
       return {};    

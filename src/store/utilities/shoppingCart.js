@@ -110,11 +110,7 @@ const Reducer = (state = [], action) => {
     case FETCH_CART:
       return action.payload
     case ADD_TO_CART:
-      {
-        const cartStatus = state.map((item) =>
-        item.itemId === action.payload.itemId ? action.payload : item 
-      );                  
-      } 
+      return state;
     case EDIT_ITEM_IN_CART:
       return state.map((item) =>
         item.itemId === action.payload.itemId ? action.payload: item 
@@ -126,7 +122,7 @@ const Reducer = (state = [], action) => {
     case CLEAR_CART:
       return {};    
     case CHECKOUT:
-      
+      return state;
     default:
         return state;
         
