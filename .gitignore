@@ -25,3 +25,4 @@ yarn-error.log*
 # Google Auth
 .secret
 GoogleOAuth.js
+GoogleOAuthLogOut.js
