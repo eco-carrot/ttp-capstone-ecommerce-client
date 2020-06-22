@@ -1,8 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {GoogleOAuth} from "../containers"
 
 const RegisterandLoginFormView = props => {
-  const { name, displayName, handleSubmit, error, handleChange, isLoggedIn, userEmail, handleLogOut,handleSignUp} = props;
+  const { name, displayName, handleSubmit, error, handleChange, isLoggedIn, userEmail, handleLogOut, handleSignUp} = props;
 
   return (
     <div>
@@ -16,6 +17,7 @@ const RegisterandLoginFormView = props => {
                   <button>Click Here to Return to Home</button>
           </Link>
           <button onClick={handleLogOut}>Log Out</button>
+          <GoogleOAuth/>
         </div> 
         : <>{name==="login"?
         <form onSubmit={handleSubmit} name={name} className="display-or-form">
@@ -39,6 +41,7 @@ const RegisterandLoginFormView = props => {
                 <p>Sign Up if you don't have an Account with us yet :D</p>
           </Link>
         </div>
+        <GoogleOAuth name="logIn"/>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
@@ -77,6 +80,7 @@ const RegisterandLoginFormView = props => {
                 <p>Log In if you have an Account with us Already :D</p>
           </Link>
         </div>
+        <GoogleOAuth name="signUp"/>
         {error && error.response && <div> {error.response.data} </div>}
       </form>}</>}
       

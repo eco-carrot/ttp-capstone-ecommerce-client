@@ -4,7 +4,6 @@ import { RegisterandLoginFormView } from "../views";
 
 import { auth, logout, fetchOpenOrderThunk, fetchAllItemsInCartThunk, clearShoppingCartOnLogOut} from "../../thunks";
 
-
 class RegisterandLoginFormContainer extends Component {
   constructor() {
     super();
@@ -24,16 +23,18 @@ class RegisterandLoginFormContainer extends Component {
     event.preventDefault();
     const formName = event.target.name;
     await this.props.loginOrSignup( this.state, formName);
-    await this.props.fetchOpenOrder(this.props.user.id);    
-    await this.props.fetchAllItemsInCart(this.props.order.id); 
+    console.log(this.props)
+    //await this.props.fetchOpenOrder(this.props.user.id);    
+    //await this.props.fetchAllItemsInCart(this.props.order.id); 
   }
 
   handleSubmit = async (event) => {
     event.preventDefault();
     const formName = event.target.name;
-    await this.props.loginOrSignup( this.state, formName);    
-    await this.props.fetchOpenOrder(this.props.user.id);    
-    await this.props.fetchAllItemsInCart(this.props.order.id); 
+    await this.props.loginOrSignup( this.state, formName);
+    console.log(this.props)    
+    //await this.props.fetchOpenOrder(this.props.user.id);    
+    //await this.props.fetchAllItemsInCart(this.props.order.id); 
   }
 
   handleLogOut = async () => {    

@@ -87,7 +87,7 @@ class AllItemsInCartContainer extends Component {
             <ToastContainer/>         
             {this.props.shoppingCart.length? 
             <div>              
-              {this.state.inCheckout? <div>Please wait while we complete your transaction...</div>:
+              {this.state.inCheckout? <div className="display-or-form"> Please wait while we complete your transaction...</div>:
                 <div className="display-or-form"> 
                   <table> 
                   <AllItemsInCartView
@@ -108,7 +108,7 @@ class AllItemsInCartContainer extends Component {
               }
             </div>
             :
-            "Your Shopping Cart is empty"
+            <div className="display-or-form"> Your Shopping Cart is empty</div>
             }
           </div> 
           :
