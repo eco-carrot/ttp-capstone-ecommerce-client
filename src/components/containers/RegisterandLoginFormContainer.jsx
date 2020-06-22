@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { RegisterandLoginFormView } from "../views";
-
 import { auth, logout, fetchOpenOrderThunk, fetchAllItemsInCartThunk, clearShoppingCartOnLogOut} from "../../thunks";
+
 
 class RegisterandLoginFormContainer extends Component {
   constructor() {
@@ -11,7 +11,8 @@ class RegisterandLoginFormContainer extends Component {
       lastName:"",
       firstName:"",
       email: "",
-      password: ""
+      password: "",
+      googleId: ""
     }
   }
 
@@ -48,6 +49,7 @@ class RegisterandLoginFormContainer extends Component {
       <RegisterandLoginFormView
         name={this.props.name}
         displayName={this.props.displayName}
+        user={this.props.user}
         error={this.props.error}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
@@ -91,6 +93,7 @@ const mapSignup = state => {
 const mapState = (state) => {
   return {
     shoppingCart: state.shoppingCart,
+    user: state.user
   };
 };
 

@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {GoogleOAuth,GoogleOAuthLogOut} from "../containers"
 
 const RegisterandLoginFormView = props => {
-  const { name, displayName, handleSubmit, error, handleChange, isLoggedIn, userEmail, handleLogOut, handleSignUp} = props;
+  const { name, displayName, user, handleSubmit, error, handleChange, isLoggedIn, userEmail, handleLogOut, handleSignUp} = props;
 
   return (
     <div>
@@ -16,8 +16,7 @@ const RegisterandLoginFormView = props => {
           <Link to={`/`}>
                   <button>Click Here to Return to Home</button>
           </Link>
-          <button onClick={handleLogOut}>Log Out</button>
-          <GoogleOAuthLogOut/>
+          {user.googleId.length?<GoogleOAuthLogOut/>:<button onClick={handleLogOut}>Log Out</button>}
         </div> 
         : <>{name==="login"?
         <form onSubmit={handleSubmit} name={name} className="display-or-form">

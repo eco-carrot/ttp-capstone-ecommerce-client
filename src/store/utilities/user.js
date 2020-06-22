@@ -38,7 +38,8 @@ export const auth = (userObj, method) => async dispatch => {
         { lastName: userObj.lastName,
           firstName: userObj.firstName,
           email: userObj.email, 
-          password: userObj.password}, { withCredentials: true });
+          password: userObj.password,
+          googleId: userObj.googleId}, { withCredentials: true });
   }
   catch (authError) {
     return dispatch(getUser({ error: authError }));
