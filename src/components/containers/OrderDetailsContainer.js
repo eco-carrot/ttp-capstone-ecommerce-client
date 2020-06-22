@@ -49,7 +49,7 @@ render() {
                 />        
             }
             </div>
-            : "Please Log In to view your order details"}
+            : <div className="display-or-form">Please Log In to view your order details</div>}
            
             
 
