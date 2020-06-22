@@ -22,7 +22,7 @@ async componentDidMount(){
         for(let i = 0; i < this.props.orderHistory.length; i++)
         {           
 
-            if(this.props.orderHistory[i].orderId == this.props.match.params.id)
+            if(this.props.orderHistory[i].orderId === Number(this.props.match.params.id))
             {               
                 this.setState({orderIndex: i});            
             }
@@ -32,6 +32,7 @@ async componentDidMount(){
 }
 
 render() {
+
     this.componentDidMount();
     return (
         
