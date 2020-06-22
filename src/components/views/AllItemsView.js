@@ -27,7 +27,7 @@ const AllItemsView = (props) => {
                   </div>
                 </div>
               </div>   
-              <p className="display-or-form">Price: ${((item.price)/100).toFixed(2)}</p>
+              <p className="display" >Price: ${((item.price)/100).toFixed(2)}</p>
               <AddToCartContainer id={item.id}/>
             </div>
         ))}

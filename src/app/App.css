@@ -17,6 +17,7 @@
   font-weight: bold;
 }
 
+
 .nav-bar{
   position: fixed;     /* Fixed Sidebar (stay in place on scroll and position relative to viewport) */
   height: 100%;
@@ -150,6 +151,18 @@
   font-size: 25px;
   font-weight: bolder;
   padding: 35px;
+}
+
+.display {
+  border-radius: 10px;
+  background: linear-gradient(200deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70%),
+  linear-gradient(125deg, rgba(0,255,0,.8), rgba(101, 105, 101, 0) 70%),
+  linear-gradient(340deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70%);
+  font-family: Georgia, serif;
+  color: beige;
+  font-size: 25px;
+  font-weight: bolder;
+  padding: 15px;
 }
 
 .col-25 {
