@@ -14,9 +14,9 @@ const RegisterandLoginFormView = props => {
           <h4>You have successfully Logged In, </h4>
           <h4>We hope you enjoy your Shopping Experience!</h4>
           <Link to={`/`}>
-                  <button>Click Here to Return to Home</button>
+                  <button className={props.view?"btn btn-dark btn-lg":""}>Click Here to Return to Home</button>
           </Link>
-          {user.googleId?<GoogleOAuthLogOut/>:<button onClick={handleLogOut}>Log Out</button>}
+          {user.googleId?<GoogleOAuthLogOut/>:<button className={props.view?"btn btn-dark btn-lg":""} onClick={handleLogOut}>Log Out</button>}
         </div> 
         : <>{name==="login"?
         <form onSubmit={handleSubmit} name={name} className={view?"greenView":"display-or-form"}>
@@ -34,7 +34,7 @@ const RegisterandLoginFormView = props => {
           <input className="col-75" name="password" type="password" onChange={handleChange} />
         </div>
         <div>
-          <button type="submit">{displayName}</button>
+          <button className={props.view?"btn btn-dark btn-lg":""} type="submit">{displayName}</button>
         <div className={view?"access-font":"link"}>
           <Link to={`/signup/`}>
                 <p>Sign Up if you don't have an Account with us yet :D</p>
@@ -72,7 +72,7 @@ const RegisterandLoginFormView = props => {
           <input className="col-75" name="password" type="password" onChange={handleChange} />
         </div>
         <div>
-          <button type="submit">{displayName}</button>
+          <button className={props.view?"btn btn-dark btn-lg":""} type="submit">{displayName}</button>
         </div>
         <div className={view?"access-font":"link"}>
           <Link to={`/login/`}>

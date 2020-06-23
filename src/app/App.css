@@ -27,7 +27,7 @@
   overflow-x: hidden;
   overflow-y: hidden;
   overflow: hidden;
-  padding-top: 100px;
+  padding-top: 75px;
 }
 
 .nav-link{
@@ -124,7 +124,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; 
 }
-{this.props.view?"access-button":}
+
 .access-button {
   background-color: black;
   border: none;
@@ -245,7 +245,7 @@ input:focus {
 }
 
 button{
-  border: 3px solid  #252525;
+  border: 3px solid  #ec767c;
   background-color: transparent;
   margin-top: 10px ;
   color: seashell;
