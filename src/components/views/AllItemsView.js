@@ -9,6 +9,7 @@ const AllItemsView = (props) => {
     <div>      
       <div>
         {props.allItems.map((item) => (
+
             <div  className={props.view?"item-card2": "item-card"}  key={item.id}>
               <div className="item-detail">
                 <Link to={`/items/${item.id}`} >

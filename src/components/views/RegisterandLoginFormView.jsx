@@ -14,9 +14,9 @@ const RegisterandLoginFormView = props => {
           <h4>You have successfully Logged In, </h4>
           <h4>We hope you enjoy your Shopping Experience!</h4>
           <Link to={`/`}>
-                  <button>Click Here to Return to Home</button>
+                  <button className={props.view?"btn btn-dark btn-lg":""}>Click Here to Return to Home</button>
           </Link>
-          {user.googleId?<GoogleOAuthLogOut/>:<button onClick={handleLogOut}>Log Out</button>}
+          {user.googleId?<GoogleOAuthLogOut/>:<button className={props.view?"btn btn-dark btn-lg":""} onClick={handleLogOut}>Log Out</button>}
         </div> 
         : <>{name==="login"?
         <form onSubmit={handleSubmit} name={name} className={view?"greenView":"display-or-form"}>
@@ -34,8 +34,8 @@ const RegisterandLoginFormView = props => {
           <input className="col-75" name="password" type="password" onChange={handleChange} />
         </div>
         <div>
-          <button type="submit">{displayName}</button>
-        <div className="link">
+          <button className={props.view?"btn btn-dark btn-lg":""} type="submit">{displayName}</button>
+        <div className={view?"access-font":"link"}>
           <Link to={`/signup/`}>
                 <p>Sign Up if you don't have an Account with us yet :D</p>
           </Link>
@@ -54,7 +54,7 @@ const RegisterandLoginFormView = props => {
           <input className="col-75" name="firstName" type="text" onChange={handleChange} />
         </div>
         <div>
-          <label className="col-25" htmlFor="email">
+          <label className="col-25" >
             <small>Last Name</small>
           </label>
           <input className="col-75" name="lastName" type="text" onChange={handleChange} />
@@ -72,9 +72,9 @@ const RegisterandLoginFormView = props => {
           <input className="col-75" name="password" type="password" onChange={handleChange} />
         </div>
         <div>
-          <button type="submit">{displayName}</button>
+          <button className={props.view?"btn btn-dark btn-lg":""} type="submit">{displayName}</button>
         </div>
-        <div className="link">
+        <div className={view?"access-font":"link"}>
           <Link to={`/login/`}>
                 <p>Log In if you have an Account with us Already :D</p>
           </Link>

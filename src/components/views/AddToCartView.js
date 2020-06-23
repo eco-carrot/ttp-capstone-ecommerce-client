@@ -4,7 +4,7 @@ import "../../app/App.css"
 const AddToCartView = (props) => {
   return (
     <div className="add-to-cart">   
-      <button type="button" className="button" onClick={()=>props.handleAddToCart(props.id)}>
+      <button type="button" className={props.view?"btn btn-dark btn-lg":"button"} onClick={()=>props.handleAddToCart(props.id)}>
           Add to Cart
       </button>
     

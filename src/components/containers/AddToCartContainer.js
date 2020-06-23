@@ -24,7 +24,7 @@ class AddToCartContainer extends Component {
     return (
       <>
         {/* passed item id to be added from prev props */}
-        <AddToCartView id={this.props.id} handleAddToCart={this.handleAddToCart}/>
+        <AddToCartView id={this.props.id} handleAddToCart={this.handleAddToCart} view={this.props.view}/>
       </>
     );
   }
@@ -32,7 +32,8 @@ class AddToCartContainer extends Component {
 const mapState = (state) => {
     return {
       shoppingCart: state.shoppingCart,
-      order: state.order
+      order: state.order,
+      view: state.view
     };
   };
 
