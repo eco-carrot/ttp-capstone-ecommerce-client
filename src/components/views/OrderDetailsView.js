@@ -14,7 +14,7 @@ const OrderDetailsView = (props) => {
             <p>Date: {(props.orderHistory[props.orderIndex].paidDate).substring(0,10)}</p>
             <h2>Items: </h2>
             {props.orderHistory[props.orderIndex].itemsInOrder.map((item) => (
-                <div key={item.id}>
+                <div key={item.id} className={props.view?"access-font":"message-Link"}>
                 <Link to={`/items/${item.id}`}>
                     <p>{item.name}</p>
                 </Link>
