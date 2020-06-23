@@ -6,7 +6,7 @@ import userIcon from '../../icon/user.png'
 import cartIcon from '../../icon/cart.png'
 import historyIcon from '../../icon/history.png'
 import viewIcon from '../../icon/glasses.png'
-
+import logoIcon from '../../icon/logo.png'
 const NavBarView = (props) => {
   return (
     <nav className="nav-bar">
@@ -14,6 +14,11 @@ const NavBarView = (props) => {
         {props.name? 
         <p className="name-nav-link">Hello {props.name}!</p>
         : ""}
+      </div>
+      <div className="logo">
+        <img 
+            //img src : https://www.iconfinder.com/free_icons
+            src={logoIcon} alt="home Icon" />
       </div>
       <Link to="/" className="nav-link">
         <img 

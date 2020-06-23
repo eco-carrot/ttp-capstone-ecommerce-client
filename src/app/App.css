@@ -17,6 +17,10 @@
   font-weight: bold;
 }
 
+.logo{
+  justify-content: start;
+  margin-bottom: 1rem;
+}
 
 .nav-bar{
   position: fixed;     /* Fixed Sidebar (stay in place on scroll and position relative to viewport) */
