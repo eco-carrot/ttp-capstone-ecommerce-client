@@ -19,7 +19,12 @@
 
 .logo{
   justify-content: start;
-  margin-bottom: 1rem;
+  margin-bottom: 1rem;  
+}
+
+.logo-img{
+  object-fit:cover;
+  border-radius:50%;
 }
 
 .nav-bar{

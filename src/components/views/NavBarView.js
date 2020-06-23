@@ -10,16 +10,17 @@ import logoIcon from '../../icon/logo.png'
 const NavBarView = (props) => {
   return (
     <nav className="nav-bar">
+      <div className="logo">
+        <img 
+            //img src : https://www.iconfinder.com/free_icons
+            src={logoIcon} alt="home Icon" class="logo-img"/>
+      </div>
       <div>
         {props.name? 
         <p className="name-nav-link">Hello {props.name}!</p>
         : ""}
       </div>
-      <div className="logo">
-        <img 
-            //img src : https://www.iconfinder.com/free_icons
-            src={logoIcon} alt="home Icon" />
-      </div>
+      
       <Link to="/" className="nav-link">
         <img 
           //img src : https://www.iconfinder.com/free_icons
