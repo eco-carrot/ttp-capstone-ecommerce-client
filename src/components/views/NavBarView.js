@@ -12,7 +12,7 @@ const NavBarView = (props) => {
     <nav className="nav-bar">
       <div>
         {props.name? 
-        <p className="nav-link">Hello {props.name}!</p>
+        <p className="name-nav-link">Hello {props.name}!</p>
         : ""}
       </div>
       <Link to="/" className="nav-link">
@@ -21,12 +21,18 @@ const NavBarView = (props) => {
           src={homeIcon} alt="home Icon" />
         Shop
       </Link>
+      
       <Link to="/login" className="nav-link">
         <img 
           //img src : https://www.iconfinder.com/free_icons
           src={userIcon} alt="user Icon" />
-        Login
+          <div> 
+            {props.name? "Account" : "Login"}
+
+          </div>
+        
       </Link>
+      
       <Link to={"/shoppingCart"}  className="nav-link">
         <img 
           //img src : https://www.iconfinder.com/free_icons

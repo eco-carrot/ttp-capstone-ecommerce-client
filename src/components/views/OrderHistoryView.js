@@ -10,14 +10,14 @@ const OrderHistoryView = (props) => {
       {props.orderHistory.length?props.orderHistory.map((order) => (
             <tr key={order.orderId}>
                
-                <td>Order ID: {order.orderId}{"  "}</td>
-                <td>Total Amount: ${(order.totalOrderAmount/100).toFixed(2)}</td>        
-                <td>Date: {(order.paidDate).substring(0, 10)}</td>       
+                <td className="td-order">Order ID: {order.orderId}{"  "}</td>
+                <td className="td-order">Total Amount: ${(order.totalOrderAmount/100).toFixed(2)}</td>        
+                <td className="td-order">Date: {(order.paidDate).substring(0, 10)}</td>       
                 <td className="message-Link">
-                    <Link to={`/orderHistory/${order.orderId}`}>
+                    <Link to={`/orderHistory/${order.orderId}`} className="order-link">
                     See Details
                 </Link>
-                </td>
+                </td >
                 </tr>))
                 :<tr className={props.view?"greenView":"display-or-form"}><td>No Order History</td></tr>}               
     </tbody>
