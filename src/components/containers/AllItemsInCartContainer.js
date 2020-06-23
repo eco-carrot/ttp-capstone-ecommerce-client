@@ -94,16 +94,17 @@ class AllItemsInCartContainer extends Component {
                     shoppingCart={this.props.shoppingCart}
                     allItems={this.props.allItems}
                     handledeleteitem={this.handledeleteitem}
+                    view={this.props.view}
                     />
                   </div>          
-                  <button onClick={()=>this.props.clearFromCart(this.state.orderId)}>Clear All Items From Cart</button>                  
-                  <StripeCheckout
+                  <button className={this.props.view?"btn btn-dark btn-lg":""} onClick={()=>this.props.clearFromCart(this.state.orderId)}>Clear All Items From Cart</button>                  
+                  <p ><StripeCheckout
                     stripeKey = {sKey}
                     token = {this.handleToken}
                     billingAddress
                     shippingAddress
                     amount = {this.getTotalCartAmount()}          
-                  />        
+                  /></p>        
                 </div>
               }
             </div>

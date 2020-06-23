@@ -30,7 +30,7 @@ class EditShoppingCartContainer extends Component {
     render() {
       return (
         <>
-          {!this.state.edit?<button onClick={this.edit}>edit quantity</button>:""}
+          {!this.state.edit?<button className={this.props.view?"btn btn-dark btn-lg":""} onClick={this.edit}>edit quantity</button>:""}
           {this.state.edit?<EditShoppingCartView 
               itemId={this.props.itemId} 
               handleChange = {this.handleChange}
@@ -42,6 +42,7 @@ class EditShoppingCartContainer extends Component {
   const mapState = (state) => {
       return {
         shoppingCart: state.shoppingCart,
+        view: state.view
       };
     };
   
