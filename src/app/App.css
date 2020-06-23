@@ -93,6 +93,7 @@
   color: white;
   transform: rotateY(180deg);
 }
+
 .flip-card-front, .flip-card-back2 {
   position: absolute;
   width: 100%;
@@ -111,6 +112,31 @@
   color: white;
   transform: rotateY(180deg);
   border-radius: 10px;
+}
+
+.access-font{
+  font-size: 25px;
+  text-transform: Uppercase;
+  font-family: sans-serif;
+  font-weight: bold;
+  background-color: black;
+  text-shadow: 2px 2px 2px seashell;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+}
+{this.props.view?"access-button":}
+.access-button {
+  background-color: black;
+  border: none;
+  color: seashell;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 12px;
+  transition-duration: 0.5s;
 }
 
 .button {
@@ -178,7 +204,6 @@
   background: linear-gradient(200deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70%),
   linear-gradient(125deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70%),
   linear-gradient(340deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70%);
-  text-transform: Uppercase;
   font-family: sans-serif;
   font-size: 25px;
   font-weight: bolder;
@@ -189,7 +214,6 @@
   border-radius: 10px;
   background: rgb(2,0,36);
   background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(52,115,78,1) 0%, rgba(63,135,149,1) 100%);
-  text-transform: Uppercase;
   font-family: sans-serif;
   font-size: 25px;
   font-weight: bolder;
@@ -221,7 +245,7 @@ input:focus {
 }
 
 button{
-  border: 3px solid  #ec767c;
+  border: 3px solid  #252525;
   background-color: transparent;
   margin-top: 10px ;
   color: seashell;

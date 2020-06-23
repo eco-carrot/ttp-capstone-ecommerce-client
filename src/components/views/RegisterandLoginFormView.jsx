@@ -35,7 +35,7 @@ const RegisterandLoginFormView = props => {
         </div>
         <div>
           <button type="submit">{displayName}</button>
-        <div className="link">
+        <div className={view?"access-font":"link"}>
           <Link to={`/signup/`}>
                 <p>Sign Up if you don't have an Account with us yet :D</p>
           </Link>
@@ -54,7 +54,7 @@ const RegisterandLoginFormView = props => {
           <input className="col-75" name="firstName" type="text" onChange={handleChange} />
         </div>
         <div>
-          <label className="col-25" htmlFor="email">
+          <label className="col-25" >
             <small>Last Name</small>
           </label>
           <input className="col-75" name="lastName" type="text" onChange={handleChange} />
@@ -74,7 +74,7 @@ const RegisterandLoginFormView = props => {
         <div>
           <button type="submit">{displayName}</button>
         </div>
-        <div className="link">
+        <div className={view?"access-font":"link"}>
           <Link to={`/login/`}>
                 <p>Log In if you have an Account with us Already :D</p>
           </Link>
