@@ -139,8 +139,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgb(2,0,36);
-  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(52,115,78,1) 0%, rgba(63,135,149,1) 100%);
+  background: rgba(49, 49, 49, 0.669);  
   color: white;
   transform: rotateY(180deg);
   border-radius: 10px;
