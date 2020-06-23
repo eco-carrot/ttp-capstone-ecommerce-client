@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import {ToastContainer, toast} from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-
+import { Link } from "react-router-dom";
 
 import { fetchAllItemsInCartThunk, 
   fetchAllItemsThunk, 
@@ -81,21 +81,21 @@ class AllItemsInCartContainer extends Component {
     const sKey = "pk_test_51GwBqvHGbCAGvRQnT3TXxQaWpO2epJ1hvLM9Ca6FqN2ggZteGIqrDieMYfHey9qrMqRU8aICRqzSLFVG7dtlfpK600MOfpNC4Q";
     return (
       <div>
-        <div className="display-or-form"><h1>Shopping Cart</h1></div>
+        <div className={this.props.view?"greenView":"display-or-form"}><h1 className="title">Shopping Cart</h1></div>
         {this.props.user.id?
           <div>   
             <ToastContainer/>         
             {this.props.shoppingCart.length? 
             <div>              
-              {this.state.inCheckout? <div>Please wait while we complete your transaction...</div>:
-                <div className="display-or-form"> 
-                  <table> 
+              {this.state.inCheckout? <div className={this.props.view?"greenView":"display-or-form"}> Please wait while we complete your transaction...</div>:
+                <div className={this.props.view?"greenView":"display-or-form"}> 
+                  <div> 
                   <AllItemsInCartView
                     shoppingCart={this.props.shoppingCart}
                     allItems={this.props.allItems}
                     handledeleteitem={this.handledeleteitem}
                     />
-                  </table>          
+                  </div>          
                   <button onClick={()=>this.props.clearFromCart(this.state.orderId)}>Clear All Items From Cart</button>                  
                   <StripeCheckout
                     stripeKey = {sKey}
@@ -108,11 +108,11 @@ class AllItemsInCartContainer extends Component {
               }
             </div>
             :
-            "Your Shopping Cart is empty"
+            <div className={this.props.view?"greenView":"display-or-form"}> Your Shopping Cart is empty</div>
             }
           </div> 
           :
-          <div className="display-or-form"> Please Log In to view your shopping cart</div>}
+          <div className={this.props.view?"greenView":"display-or-form"}><Link to="login" className="message-Link"> Please Log In to view your shopping cart</Link></div>}
          
       </div>
     );
@@ -125,7 +125,8 @@ const mapState = (state) => {
     shoppingCart: state.shoppingCart,
     allItems: state.allItems,
     user: state.user,
-    order: state.order
+    order: state.order,
+    view: state.view
   };
 };
 

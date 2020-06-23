@@ -6,20 +6,20 @@ const OrderHistoryView = (props) => {
   
   return (    
       
-    <tbody className="display-or-form">
+    <tbody className={props.view?"greenView":"display-or-form"}>
       {props.orderHistory.length?props.orderHistory.map((order) => (
             <tr key={order.orderId}>
                
                 <td>Order ID: {order.orderId}{"  "}</td>
                 <td>Total Amount: ${(order.totalOrderAmount/100).toFixed(2)}</td>        
                 <td>Date: {(order.paidDate).substring(0, 10)}</td>       
-                <td>
+                <td className="message-Link">
                     <Link to={`/orderHistory/${order.orderId}`}>
                     See Details
                 </Link>
                 </td>
                 </tr>))
-                :<div className="display-or-form">No Order History</div>}               
+                :<tr className={props.view?"greenView":"display-or-form"}><td>No Order History</td></tr>}               
     </tbody>
   );
 };

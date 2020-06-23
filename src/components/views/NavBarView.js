@@ -5,6 +5,7 @@ import homeIcon from '../../icon/home.png'
 import userIcon from '../../icon/user.png'
 import cartIcon from '../../icon/cart.png'
 import historyIcon from '../../icon/history.png'
+import viewIcon from '../../icon/glasses.png'
 
 const NavBarView = (props) => {
   return (
@@ -18,7 +19,7 @@ const NavBarView = (props) => {
         <img 
           //img src : https://www.iconfinder.com/free_icons
           src={homeIcon} alt="home Icon" />
-        Home
+        Shop
       </Link>
       <Link to="/login" className="nav-link">
         <img 
@@ -38,6 +39,11 @@ const NavBarView = (props) => {
           src={historyIcon} alt="history Icon" />
         Order History
       </Link>
+      <Link className="nav-link" onClick={props.changeView}>
+        <img 
+          //img src : https://www.iconfinder.com/free_icons
+          src={viewIcon} alt="view Icon" />
+          View</Link>
     </nav>
   );
 };

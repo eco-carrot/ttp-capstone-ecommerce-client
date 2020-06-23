@@ -6,7 +6,7 @@ import {AddToCartContainer} from "../containers"
 
 const ItemView = (props) => {
   return ( 
-    <div className="display-or-form">   
+    <div className={props.view?"greenView":"display-or-form"}>   
       <img src={props.item.imageURL} width="300px" 
       alt={props.item.name} />         
       <h1>{props.item.name}</h1>

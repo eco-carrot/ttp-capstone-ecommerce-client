@@ -22,7 +22,7 @@ async componentDidMount(){
         for(let i = 0; i < this.props.orderHistory.length; i++)
         {           
 
-            if(this.props.orderHistory[i].orderId == this.props.match.params.id)
+            if(this.props.orderHistory[i].orderId === Number(this.props.match.params.id))
             {               
                 this.setState({orderIndex: i});            
             }
@@ -32,11 +32,12 @@ async componentDidMount(){
 }
 
 render() {
+
     this.componentDidMount();
     return (
         
         <div>
-            <div className="display-or-form"><h1>Order Details</h1></div>
+            <div className={this.props.view?"greenView":"display-or-form"}><h1>Order Details</h1></div>
             {this.props.user.id?
 
             <div>
@@ -45,11 +46,12 @@ render() {
 
                 <OrderDetailsView
                 orderHistory={this.props.orderHistory}       
-                orderIndex = {this.state.orderIndex}              
+                orderIndex = {this.state.orderIndex}
+                view={this.props.view}      
                 />        
             }
             </div>
-            : "Please Log In to view your order details"}
+            : <div className={this.props.view?"greenView":"display-or-form"}>Please Log In to view your order details</div>}
            
             
 
@@ -63,7 +65,8 @@ render() {
 const mapState = (state) => {
   return {
     orderHistory: state.orderHistory,   
-    user: state.user    
+    user: state.user,
+    view: state.view    
   };
 };
 

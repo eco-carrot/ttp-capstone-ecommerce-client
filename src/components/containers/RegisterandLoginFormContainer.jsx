@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { RegisterandLoginFormView } from "../views";
-
 import { auth, logout, fetchOpenOrderThunk, fetchAllItemsInCartThunk, clearShoppingCartOnLogOut} from "../../thunks";
 
 
@@ -12,7 +11,8 @@ class RegisterandLoginFormContainer extends Component {
       lastName:"",
       firstName:"",
       email: "",
-      password: ""
+      password: "",
+      googleId: ""
     }
   }
 
@@ -24,16 +24,18 @@ class RegisterandLoginFormContainer extends Component {
     event.preventDefault();
     const formName = event.target.name;
     await this.props.loginOrSignup( this.state, formName);
-    await this.props.fetchOpenOrder(this.props.user.id);    
-    await this.props.fetchAllItemsInCart(this.props.order.id); 
+    console.log(this.props)
+    //await this.props.fetchOpenOrder(this.props.user.id);    
+    //await this.props.fetchAllItemsInCart(this.props.order.id); 
   }
 
   handleSubmit = async (event) => {
     event.preventDefault();
     const formName = event.target.name;
-    await this.props.loginOrSignup( this.state, formName);    
-    await this.props.fetchOpenOrder(this.props.user.id);    
-    await this.props.fetchAllItemsInCart(this.props.order.id); 
+    await this.props.loginOrSignup( this.state, formName);
+    console.log(this.props)    
+    //await this.props.fetchOpenOrder(this.props.user.id);    
+    //await this.props.fetchAllItemsInCart(this.props.order.id); 
   }
 
   handleLogOut = async () => {    
@@ -47,6 +49,7 @@ class RegisterandLoginFormContainer extends Component {
       <RegisterandLoginFormView
         name={this.props.name}
         displayName={this.props.displayName}
+        user={this.props.user}
         error={this.props.error}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
@@ -54,6 +57,7 @@ class RegisterandLoginFormContainer extends Component {
         handleSignUp={this.handleSignUp}
         isLoggedIn={this.props.isLoggedIn}
         userEmail={this.props.userEmail}
+        view={this.props.view} 
       />
     );
   }
@@ -70,7 +74,8 @@ const mapLogin = state => {
     shoppingCart: state.shoppingCart,
     allItems: state.allItems,
     user: state.user,
-    order: state.order
+    order: state.order,
+    view: state.view
   };
 };
 
@@ -83,13 +88,16 @@ const mapSignup = state => {
     isLoggedIn: !!state.user.id,
     userEmail: state.user.email,
     user: state.user,
-    order: state.order
+    order: state.order,
+    view: state.view
   };
 };
 
 const mapState = (state) => {
   return {
     shoppingCart: state.shoppingCart,
+    user: state.user,
+    view: state.view
   };
 };
 

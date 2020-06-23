@@ -1,18 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-
-
 import {EditShoppingCartContainer} from "../containers"
+
 const AllItemsInCartView = (props) => {
   let cartTotal = 0;
+  let totalQuantity = 0;
   return (
-    <tbody>
+    <table>
+      <tbody>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
       {props.shoppingCart.length?props.shoppingCart.map((item) => (
             <tr key={item.itemId}>
-                <td>Product : {props.allItems.map((eachitem => eachitem.id=== item.itemId ? eachitem.name: "" ))}</td>
-                <td>Quantity: {item.quantity}{"  "}</td>
-                <td>Price: ${((item.price)/100).toFixed(2)}</td>
+                <td> {props.allItems.map((eachitem => eachitem.id=== item.itemId ? eachitem.name: "" ))}</td>
+                <td> {item.quantity}</td>
+                <td> $ {((item.price)/100).toFixed(2)}</td>
                 <td> = $ {((item.price)/100).toFixed(2)*item.quantity}</td>
                 <td><EditShoppingCartContainer itemId={item.itemId} orderId={item.orderId}/></td>
                 <td><button type="button" 
@@ -20,11 +25,17 @@ const AllItemsInCartView = (props) => {
                         Remove Item
                     </button></td>
                 <td hidden>{cartTotal+= ((item.price)/100).toFixed(2)*item.quantity}</td>
+                <td hidden>{totalQuantity+= item.quantity}</td>
                 </tr>))
                 :""}
-                Cart Total : {cartTotal}
-                
-    </tbody>
+                <tr>
+                  <td>Total Items:</td>
+                  <td> {totalQuantity} </td>
+                  <td>Cart Total: </td>
+                  <td> ${cartTotal}</td>
+                </tr>
+      </tbody>
+    </table>
   );
 };
 

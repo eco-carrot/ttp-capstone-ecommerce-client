@@ -1,13 +1,14 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {GoogleOAuth,GoogleOAuthLogOut} from "../containers"
 
 const RegisterandLoginFormView = props => {
-  const { name, displayName, handleSubmit, error, handleChange, isLoggedIn, userEmail, handleLogOut,handleSignUp} = props;
+  const { name, displayName, user, handleSubmit, error, handleChange, isLoggedIn, userEmail, handleLogOut, handleSignUp, view} = props;
 
   return (
     <div>
       {isLoggedIn ? 
-        <div className="display-or-form"> 
+        <div className={view?"greenView":"display-or-form"}> 
           <h3>Good Day!</h3>
           <h2>{userEmail}</h2>
           <h4>You have successfully Logged In, </h4>
@@ -15,10 +16,10 @@ const RegisterandLoginFormView = props => {
           <Link to={`/`}>
                   <button>Click Here to Return to Home</button>
           </Link>
-          <button onClick={handleLogOut}>Log Out</button>
+          {user.googleId?<GoogleOAuthLogOut/>:<button onClick={handleLogOut}>Log Out</button>}
         </div> 
         : <>{name==="login"?
-        <form onSubmit={handleSubmit} name={name} className="display-or-form">
+        <form onSubmit={handleSubmit} name={name} className={view?"greenView":"display-or-form"}>
         <h3>Log in </h3>
         <div>
           <label htmlFor="email" className="col-25">
@@ -39,11 +40,12 @@ const RegisterandLoginFormView = props => {
                 <p>Sign Up if you don't have an Account with us yet :D</p>
           </Link>
         </div>
+        <GoogleOAuth name="logIn"/>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
       :
-      <form onSubmit={handleSignUp} name={name} className="display-or-form">
+      <form onSubmit={handleSignUp} name={name} className={view?"greenView":"display-or-form"}>
         <h3>Sign Up </h3>
         <div>
           <label className="col-25">
@@ -77,6 +79,7 @@ const RegisterandLoginFormView = props => {
                 <p>Log In if you have an Account with us Already :D</p>
           </Link>
         </div>
+        <GoogleOAuth name="signUp"/>
         {error && error.response && <div> {error.response.data} </div>}
       </form>}</>}
       

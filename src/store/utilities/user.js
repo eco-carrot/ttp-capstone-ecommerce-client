@@ -3,8 +3,6 @@ import axios from "axios";
 // ACTION TYPES
 const GET_USER = "GET_USER";
 const REMOVE_USER = "REMOVE_USER";
-const LOGOUT_CART = "LOGOUT_CART";
-const LOGOUT_ORDER = "LOGOUT_ORDER";
 
 // ACTION CREATORS
 const getUser = user => { 
@@ -40,7 +38,8 @@ export const auth = (userObj, method) => async dispatch => {
         { lastName: userObj.lastName,
           firstName: userObj.firstName,
           email: userObj.email, 
-          password: userObj.password}, { withCredentials: true });
+          password: userObj.password,
+          googleId: userObj.googleId}, { withCredentials: true });
   }
   catch (authError) {
     return dispatch(getUser({ error: authError }));
@@ -68,7 +67,6 @@ export const logout = () => async dispatch => {
 const reducer = (state = {}, action) => {
   switch (action.type) {
     case GET_USER:
-      
       return action.payload;
     case REMOVE_USER:
       return {};    

@@ -7,7 +7,6 @@ import {
 } from "../../thunks";
 
 import { ItemView } from "../views";
-import { user } from "../../reducers";
 
 class ItemContainer extends Component {
   componentDidMount() {
@@ -28,7 +27,8 @@ class ItemContainer extends Component {
       <ItemView
         item={this.props.item}
         user={this.props.user}
-        handleDelete={this.handleDelete}        
+        handleDelete={this.handleDelete}  
+        view={this.props.view}      
       />
     );
   }
@@ -38,7 +38,8 @@ class ItemContainer extends Component {
 const mapState = (state) => {
   return {
     item: state.item,   
-    user: state.user 
+    user: state.user,
+    view: state.view
   };
 };
 

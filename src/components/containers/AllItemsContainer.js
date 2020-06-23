@@ -21,7 +21,7 @@ class AllItemsContainer extends Component {
       {this.props.user.id?"":this.clearOrder()}           
       
       <AllItemsView
-        allItems={this.props.allItems} user={this.props.user}
+        allItems={this.props.allItems} user={this.props.user} view={this.props.view}
       />
       </div>
     );
@@ -33,6 +33,7 @@ const mapState = (state) => {
   return {
     user: state.user,
     allItems: state.allItems,
+    view: state.view,
   };
 };
 
