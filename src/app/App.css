@@ -141,13 +141,14 @@
 
 .access-font{
   font-size: 25px;
-  text-transform: Uppercase;
-  font-family: sans-serif;
-  font-weight: bold;
-  background-color: black;
-  text-shadow: 2px 2px 2px seashell;
+  text-transform: Uppercase;  
+  background-color: white;  
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; 
+}
+
+.access-font:hover{
+  background-color: black; 
 }
 
 .access-button {
@@ -204,6 +205,8 @@
   padding: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .item-card2{  

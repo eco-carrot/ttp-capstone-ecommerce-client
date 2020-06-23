@@ -2,14 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import {AddToCartContainer} from "../containers"
+import { Container, Row, Col } from "reactstrap";
 
 const AllItemsView = (props) => {
 
   return (
-    <div>      
+    <div>   
       <div>
-        {props.allItems.map((item) => (
-
+        <Container>
+          <Row>
+        {props.allItems.map((item) => (   
+          <Col xs="4">    
             <div  className={props.view?"item-card2": "item-card"}  key={item.id}>
               <div className="item-detail">
                 <Link to={`/items/${item.id}`} >
@@ -32,7 +35,10 @@ const AllItemsView = (props) => {
               </div>   
               <AddToCartContainer id={item.id}/>
             </div>
+            </Col>   
         ))}
+        </Row>
+        </Container>
       </div>
       {props.user.role === "admin" ? 
         <Link to="/items/new" className="add-item">
