@@ -21,13 +21,18 @@
 .nav-bar{
   position: fixed;     /* Fixed Sidebar (stay in place on scroll and position relative to viewport) */
   height: 100%;
-  width: 75px;     /* Set the width of the sidebar */
+  width: 100px;     /* Set the width of the sidebar */
   z-index: 1;      /* Stay on top of everything */
   background-color: rgb(185, 64, 64); /* Black */
   overflow-x: hidden;
   overflow-y: hidden;
   overflow: hidden;
   padding-top: 75px;
+}
+
+.name-nav-link{
+  color: wheat;
+  font-weight: bold;
 }
 
 .nav-link{
@@ -41,15 +46,37 @@
 }
 
 .message-Link{
-  color: wheat;
+  margin-left: 10px;
   margin-top: 2rem;
-  text-transform: Uppercase;
-  font-family: sans-serif;
+  text-transform: Uppercase;  
   font-weight: bold;
-  background-color: seashell;
-  text-shadow: 2px 2px 2px  black;
+  background-color: seashell;  
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; 
+}
+
+.message-Link:hover{
+  
+  background-color: black;  
+}
+
+.order-link{
+  background-color: rgba(246, 246, 246, 0.338);  
+  padding: 3px;
+  border-radius: 10px;
+  margin-right: 5px;
+
+}
+
+.order-history-details-card{
+  background-color: rgba(246, 246, 246, 0.338);  
+  padding: 3px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.order-history-details-name{
+  color: rgb(7, 2, 65);
 }
 
 .flip-card {
@@ -87,9 +114,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(200deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70%),
-  linear-gradient(125deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70%),
-  linear-gradient(340deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70%);
+  background: rgba(12, 12, 12, 0.331);  
   color: white;
   transform: rotateY(180deg);
 }
@@ -160,33 +185,56 @@
 
 .item-detail {
   margin-top: 2rem;
-  text-transform: Uppercase;
-  font-family: sans-serif;
+  text-transform: Uppercase; 
   font-size: 6rem;
   font-weight: bold;
   position: relative;
-  background-color: white;
-  text-shadow: 2px 2px 4px #d14949;
+  background-color: #252525;
+  text-shadow: 2px 2px 2px white; 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+
+}
+
+.item-card{
+  background: linear-gradient(200deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70%),
+  linear-gradient(125deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70%),
+  linear-gradient(340deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70%);    
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.item-card2{  
+  background: rgb(2,0,36);
+  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(52,115,78,1) 0%, rgba(63,135,149,1) 100%);
+  color: white;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+.link{
+  margin-top: 2rem;
+  text-transform: Uppercase;  
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: white; 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; 
 }
 
-.link{
-  margin-top: 2rem;
-  text-transform: Uppercase;
-  font-family: sans-serif;
-  font-size: 1rem;
-  font-weight: bold;
-  background-color: white;
-  text-shadow: 2px 2px 4px #d14949;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; 
+.link:hover{
+  background-color: black; 
 }
 
 .title{
   margin-top: 2rem;
   text-transform: Uppercase;
-  font-family: sans-serif;
+  
   font-size: 2.5rem;
   font-weight: bold;
   background-color: #252525;
@@ -203,22 +251,29 @@
   border-radius: 10px;
   background: linear-gradient(200deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70%),
   linear-gradient(125deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70%),
-  linear-gradient(340deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70%);
-  font-family: sans-serif;
-  font-size: 25px;
-  font-weight: bolder;
+  linear-gradient(340deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70%); 
+  font-size: 25px;  
   padding: 35px;
+  margin-bottom: 10px;
 }
 
 .greenView {
   border-radius: 10px;
   background: rgb(2,0,36);
-  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(52,115,78,1) 0%, rgba(63,135,149,1) 100%);
-  font-family: sans-serif;
-  font-size: 25px;
-  font-weight: bolder;
+  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(52,115,78,1) 0%, rgba(63,135,149,1) 100%);  
+  font-size: 25px;  
   padding: 35px;
+  margin-bottom: 10px;
 }
+
+.td-order{
+  padding: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+
+
+}
+
 
 .col-25 {
   float: left;

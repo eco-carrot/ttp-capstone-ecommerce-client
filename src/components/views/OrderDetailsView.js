@@ -14,9 +14,9 @@ const OrderDetailsView = (props) => {
             <p>Date: {(props.orderHistory[props.orderIndex].paidDate).substring(0,10)}</p>
             <h2>Items: </h2>
             {props.orderHistory[props.orderIndex].itemsInOrder.map((item) => (
-                <div key={item.id} className={props.view?"access-font":"message-Link"}>
+                <div key={item.id} className="order-history-details-card">
                 <Link to={`/items/${item.id}`}>
-                    <p>{item.name}</p>
+                    <p className="order-history-details-name">{item.name}</p>
                 </Link>
                 <img src={item.imageURL} width="50px" alt={item.name} />   
                 <p>Price: ${((item.price)/100).toFixed(2)}</p>      
