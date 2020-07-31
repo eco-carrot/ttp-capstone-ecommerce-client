@@ -86,3 +86,4 @@ const mapLogin = state => {
   export default connect(mapState, mapDispatch)(GoogleOAuth);
   export const Login = connect(mapLogin, mapDispatch)(GoogleOAuth);
   export const Signup = connect(mapSignup, mapDispatch)(GoogleOAuth);
+
