@@ -33,7 +33,7 @@
     "eject": "react-scripts eject",
     "deploy": "npm run build && firebase deploy"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "https://eco-carrot.herokuapp.com/",
   "eslintConfig": {
     "extends": "react-app"
   },
