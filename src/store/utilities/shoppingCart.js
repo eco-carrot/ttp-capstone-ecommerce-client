@@ -1,4 +1,5 @@
 import axios from 'axios';
+require('dotenv').config({ path: '../../../' })
 
 // Shopping Cart
 const FETCH_CART = 'FETCH_CART';
@@ -49,7 +50,7 @@ export const clearShoppingCartOnLogOut =()=>({
 
 export const cartCheckoutThunk = (token, product) => {
   return axios
-  .post('api/checkout', {token, product})
+  .post(process.env.REACT_APP_API_URL_PROD + '/api/checkout', {token, product})
   .then((res) => {    
     return res.data;
   })
@@ -58,7 +59,7 @@ export const cartCheckoutThunk = (token, product) => {
 
 export const fetchAllItemsInCartThunk = (id) => (dispatch) => {
   return axios
-    .get(`/api/order_items/${id}`)
+    .get(process.env.REACT_APP_API_URL_PROD + `/api/order_items/${id}`)
     .then((res) => {      
       return res.data;
     })
@@ -69,7 +70,7 @@ export const fetchAllItemsInCartThunk = (id) => (dispatch) => {
 // creating a cart if user 
 export const addToCartThunk = (item, ownProps) => (dispatch) => {
   return axios
-    .post(`/api/order_items/`, item)
+    .post(process.env.REACT_APP_API_URL_PROD + `/api/order_items/`, item)
     .then((res) => res.data)
     .then((newCart) => {
       const updatedCart = { ...newCart};          
@@ -81,7 +82,7 @@ export const addToCartThunk = (item, ownProps) => (dispatch) => {
 
 export const editQuantityThunk = (id, itemId, quantity)=>(dispatch)=>{
   return axios
-    .put(`/api/order_items/${id}/${itemId}`, {quantity:quantity})
+    .put(process.env.REACT_APP_API_URL_PROD + `/api/order_items/${id}/${itemId}`, {quantity:quantity})
     .then((res) => res.data)
     .then((updatedQuantity) => {
       dispatch(editItemInCart(updatedQuantity));
@@ -91,7 +92,7 @@ export const editQuantityThunk = (id, itemId, quantity)=>(dispatch)=>{
 
 export const  deleteItemFromCartThunk = (id,itemId) => (dispatch) => {
   return axios
-    .delete(`/api/order_items/${id}/${itemId}`)
+    .delete(process.env.REACT_APP_API_URL_PROD + `/api/order_items/${id}/${itemId}`)
     .then((res) => res.data)
     .then(() => dispatch(removeFromCart(itemId)))
     .catch((err) => console.log(err));
@@ -99,7 +100,7 @@ export const  deleteItemFromCartThunk = (id,itemId) => (dispatch) => {
 
 export const clearFromCartThunk = (id) => (dispatch) => {
   return axios
-    .delete(`/api/order_items/${id}/`)
+    .delete(process.env.REACT_APP_API_URL_PROD + `/api/order_items/${id}/`)
     .then((res) => res.data)
     .then(() => dispatch(clearFromCart(id)))
     .catch((err) => console.log(err));

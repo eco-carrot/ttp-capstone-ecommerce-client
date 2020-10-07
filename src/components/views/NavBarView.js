@@ -55,7 +55,8 @@ const NavBarView = (props) => {
         <img 
           //img src : https://www.iconfinder.com/free_icons
           src={viewIcon} alt="view Icon" />
-          View</Link>
+          View
+      </Link>
     </nav>
   );
 };

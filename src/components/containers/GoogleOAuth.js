@@ -9,11 +9,13 @@ class GoogleOAuth extends Component {
 
     signUpGoogle = async(res)=> {
         console.log(res.profileObj)
-        await this.props.loginOrSignup({email:res.profileObj.email, firstName:res.profileObj.givenName, lastName: res.profileObj.familyName, password:res.profileObj.googleId},"signup")
         console.log(this.props)
+        await this.props.loginOrSignup({email:res.profileObj.email, firstName:res.profileObj.givenName, lastName: res.profileObj.familyName, password:res.profileObj.googleId},"signup")
     }
 
     logInGoogle = async(res) => {
+        console.log(res.profileObj)
+        console.log(this.props)
         await this.props.loginOrSignup({email:res.profileObj.email, password:res.profileObj.googleId},"login") ; 
     }
 

@@ -1,4 +1,6 @@
 import axios from 'axios';
+require('dotenv').config({ path: '../../../' })
+
 // const FETCH_ORDER = 'FETCH_ORDER';
 const CREATE_ORDER = 'CREATE_ORDER';
 
@@ -21,7 +23,7 @@ export const createOrder = (order) => ({
 
 export const createOrderThunk = (ownProps) => (dispatch) => {
   return axios
-    .post("/api/order")
+    .post(process.env.REACT_APP_API_URL_PROD +"/api/order")
     .then((res) => res.data)
     .then((newOrder) => {
       const tweakedOrder = { ...newOrder, items: [] };

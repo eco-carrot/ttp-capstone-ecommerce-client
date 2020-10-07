@@ -1,4 +1,6 @@
 import axios from 'axios';
+require('dotenv').config({ path: '../../../' })
+
 
 const FETCH_ORDER_HISTORY = "FETCH_ORDER_HISTORY";
 
@@ -13,7 +15,7 @@ const FETCH_ORDER_HISTORY = "FETCH_ORDER_HISTORY";
 
    export const fetchOrderHistoryThunk = (userId) => (dispatch) => {    
     return axios
-      .post(`/api/orderHistory`, {userId})
+      .post(process.env.REACT_APP_API_URL_PROD + `/api/orderHistory`, {userId})
       .then((res) => res.data)
       .then((orderHistory) => dispatch(fetchOrderHistory(orderHistory)))
       .catch((err) => console.log(err));

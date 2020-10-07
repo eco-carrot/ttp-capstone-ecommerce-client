@@ -1,4 +1,5 @@
 import axios from "axios";
+require('dotenv').config({ path: '../../../' })
 
 // ACTION TYPES
 const GET_USER = "GET_USER";
@@ -22,7 +23,7 @@ const removeUser = () => {
 // THUNK CREATORS
 export const me = () => async dispatch => {
   try {
-    const res = await axios.get("http://localhost:3001/auth/me", { withCredentials: true });
+    const res = await axios.get(process.env.REACT_APP_API_URL_PROD + "/auth/me", { withCredentials: true });
     dispatch(getUser(res.data || {}));
   }
   catch (err) {
@@ -34,7 +35,7 @@ export const auth = (userObj, method) => async dispatch => {
   let res;
   
   try {
-    res = await axios.post(`/auth/${method}`, 
+    res = await axios.post(process.env.REACT_APP_API_URL_PROD + `/auth/${method}`, 
         { lastName: userObj.lastName,
           firstName: userObj.firstName,
           email: userObj.email, 
@@ -55,8 +56,8 @@ export const auth = (userObj, method) => async dispatch => {
 
 export const logout = () => async dispatch => {
   try {
-    await axios.post(`/auth/logout`, { withCredentials: true });
-    await dispatch(removeUser());    
+    await dispatch(removeUser()); 
+    await axios.post(process.env.REACT_APP_API_URL_PROD + `/auth/logout`, { withCredentials: true });  
   }
   catch (err) {
     console.error(err);

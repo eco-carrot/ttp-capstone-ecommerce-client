@@ -10,8 +10,7 @@ const AllItemsView = (props) => {
     <div>   
       <div>
         <Container>
-          <Row>
-        {props.allItems.map((item) => (   
+          <Row>{props.allItems.length>0?props.allItems.map((item) => (   
           <Col xs="4">    
             <div  className={props.view?"item-card2": "item-card"}  key={item.id}>
               <div className="item-detail">
@@ -36,8 +35,10 @@ const AllItemsView = (props) => {
               <AddToCartContainer id={item.id}/>
             </div>
             </Col>   
-        ))}
+        )):""}
+        
         </Row>
+        
         </Container>
       </div>
       {props.user.role === "admin" ? 

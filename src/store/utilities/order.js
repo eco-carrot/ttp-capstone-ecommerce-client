@@ -1,4 +1,5 @@
 import axios from "axios";
+require('dotenv').config({ path: '../../../' })
 
 // Action Types
 const FETCH_ORDER = "FETCH_ORDER";
@@ -36,7 +37,7 @@ export const clearOrder = () => {
 // Thunk Creators
 export const fetchOrderThunk = (id) => (dispatch) => {
   return axios
-    .get(`/api/orders/${id}`)
+    .get(process.env.REACT_APP_API_URL_PROD + `/api/orders/${id}`)
     .then((res) => res.data)
     .then((item) => dispatch(fetchOrder(item)))
     .catch((err) => console.log(err));
@@ -45,7 +46,7 @@ export const fetchOrderThunk = (id) => (dispatch) => {
 export const fetchOpenOrderThunk = (userId) => (dispatch) => {
     
     return axios
-      .get(`/api/user/${userId}/orders/open`)
+      .get(process.env.REACT_APP_API_URL_PROD + `/api/user/${userId}/orders/open`)
       .then((res) => res.data)
       .then((item) => dispatch(fetchOpenOrder(item)))
       .catch((err) => console.log(err));

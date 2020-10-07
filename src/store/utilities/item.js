@@ -1,10 +1,13 @@
 import axios from "axios";
+require('dotenv').config({ path: '../../../' })
 
 // Action Types
 const FETCH_ITEM = "FETCH_ITEM";
 const DELETE_ITEM = "DELETE_ITEM";
 const EDIT_ITEM = "EDIT_ITEM";
 const ADD_ITEM = "ADD_ITEM";
+
+
 
 // Action Creators
 
@@ -39,7 +42,7 @@ const deleteItem = (id) => {
 // Thunk Creators
 export const fetchItemThunk = (id) => (dispatch) => {
   return axios
-    .get(`/api/items/${id}`)
+    .get(process.env.REACT_APP_API_URL_PROD + `/api/items/${id}`)
     .then((res) => res.data)
     .then((item) => dispatch(fetchItem(item)))
     .catch((err) => console.log(err));
@@ -47,7 +50,7 @@ export const fetchItemThunk = (id) => (dispatch) => {
 
 export const addItemThunk = (item, ownProps) => (dispatch) => {
   return axios
-    .post("/api/items", item)
+    .post(process.env.REACT_APP_API_URL_PROD + "/api/items", item)
     .then((res) => res.data)
     .then((newItem) => {
       const tweakedItem = { ...newItem};
@@ -59,7 +62,7 @@ export const addItemThunk = (item, ownProps) => (dispatch) => {
 
 export const editItemThunk = (id, item) => (dispatch) => {
   return axios
-    .put(`/api/items/${id}`, item)
+    .put(process.env.REACT_APP_API_URL_PROD + `/api/items/${id}`, item)
     .then((res) => res.data)
     .then((updatedItem) => {
       dispatch(editItem(updatedItem));
@@ -69,7 +72,7 @@ export const editItemThunk = (id, item) => (dispatch) => {
 
 export const deleteItemThunk = (id) => (dispatch) => {
   return axios
-    .delete(`/api/items/${id}`)
+    .delete(process.env.REACT_APP_API_URL_PROD + `/api/items/${id}`)
     .then((res) => res.data)
     .then(() => dispatch(deleteItem(id)))
     .catch((err) => console.log(err));

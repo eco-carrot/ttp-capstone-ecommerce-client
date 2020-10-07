@@ -1,4 +1,5 @@
 import axios from "axios";
+require('dotenv').config({ path: '../../../' })
 
 // ACTION TYPES;
 const FETCH_ALL_ITEMS = "FETCH_ALL_ITEMS";
@@ -14,7 +15,7 @@ const fetchAllItems = (items) => {
 // THUNK CREATORS;
 export const fetchAllItemsThunk = () => (dispatch) => {
   return axios
-    .get("/api/items")
+    .get(process.env.REACT_APP_API_URL_PROD +  "/api/items")
     .then((res) => {
       
       return res.data;

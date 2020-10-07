@@ -61,6 +61,7 @@
   font-weight: bold;
   background-color: seashell;  
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent; 
 }
 
@@ -155,6 +156,7 @@
   text-transform: Uppercase;  
   background-color: white;  
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent; 
 }
 
@@ -204,6 +206,7 @@
   background-color: #252525;
   text-shadow: 2px 2px 2px white; 
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent; 
 
 }
@@ -236,6 +239,7 @@
   font-weight: bold;
   background-color: white; 
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent; 
 }
 
@@ -252,6 +256,7 @@
   background-color: #252525;
   text-shadow: 2px 2px 2px white;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent; 
 }
 
